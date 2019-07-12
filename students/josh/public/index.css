@@ -177,13 +177,16 @@ input{
 .sample{
     width:360px;
     height: 480px;
+    object-fit: cover;
 }
 
 .color {
+    display: inline-block;
     width:24px;
     height: 24px;
     background-color: black;
     margin-top: 20px;
+    margin-right:10px;
 }
 
 .sample-name {
