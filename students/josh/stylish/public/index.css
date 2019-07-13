@@ -6,6 +6,10 @@ html, body {
     margin: 0 ;
 }
 
+a {
+    text-decoration:none;
+}
+
 /* ----navbar------- */
 
 .nav {
@@ -43,11 +47,20 @@ ul li {
 .nav-left{
     margin-top: 44px;
     margin-bottom: 28px;
+    
+}
+.nav-left a {
+    color:#3f3a3a;
+}
+
+.nav-left .isActive{
+    color:#8b572a;
 }
 
 .nav-menu {
     width:100%;
     justify-content: space-between;
+    
 }
 
 .menu li:nth-child(odd){
@@ -128,27 +141,22 @@ input{
 
 /* -------category------ */
 
-.block-1{
-    position: relative;
-}
-
 .new{
     display:inline-block;
     width:64px;
     height: 64px;
-    position: absolute ;
-    text-align: center;
-    background-color: #c49871;
-    border-radius: 50%;
-    top:20px;
-    right:20px;
-    
-}
-
-.new-text{
     font-size: 20px;
     color: #ffffff;
+    position: absolute ;
+    text-align: center;
+    line-height: 64px;
+    background-color: #c49871;
+    border-radius: 100%;
+    z-index: 1;
+    top:20px;
+    right:20px;
 }
+
 
 .main-content{
     justify-content: center;
@@ -158,20 +166,17 @@ input{
     width: 80%;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
-.block-1,
-.block-2,
-.block-4,
-.block-5 {
-    margin-right: 40px;
-}
 
-.block-1,
-.block-2,
-.block-3 {
-    margin-bottom: 50px;
+/* ------------------------------ */
+
+
+
+.category-block{
+    margin: 20px;
+    position: relative
 }
 
 .sample{
@@ -187,6 +192,10 @@ input{
     background-color: black;
     margin-top: 20px;
     margin-right:10px;
+}
+
+.color-border{
+    border: 1px solid rgb(218, 217, 217);
 }
 
 .sample-name {
@@ -219,7 +228,7 @@ input{
 .footer{
     width:100%;
     height: 115px;
-    margin-top: 96px;
+    margin-top: 76px;
     background-color: #333333;
     justify-content: center;
 }
@@ -299,8 +308,7 @@ input{
     .category{
         justify-content: space-evenly;
     }
-    .block-1, .block-2 ,.block-3,
-    .block-4, .block-5, .block-6 {
+    .category-block {
         margin-left: 2.5%;
         margin-right:2.5%;
         margin-bottom: 24px;
@@ -385,7 +393,10 @@ input{
     .nav-left{
         height: 50px;
         background-color: #333333;
-        color: #ffffff; 
+    }
+
+    .nav-left a{
+        color: #ffffff;
     }
 
     .menu li:nth-child(odd){
@@ -425,6 +436,7 @@ input{
     .category{
         width: 85%;
         margin-top: 20px;
+        justify-content: space-between;
     }
     
     .sample{
@@ -457,11 +469,11 @@ input{
         height: 36px;
         top:10px;
         right:10px;
+        font-size: 12px;
+        line-height: 36px;
     }
     
-    .new-text{
-        font-size: 12px;
-    }
+    
 
     /* -----footer  800 ------*/
     .footer{
@@ -517,7 +529,7 @@ input{
     }
 
     .line, .twitter{
-        margin-right: 14px;
+        margin-right: 10%;
     }
 
     /*------- fixed-bar------ */
@@ -579,25 +591,9 @@ input{
         justify-content: center;
     }
 
-    .block-1,
-    .block-3,
-    .block-5 {
-        margin-right: 6px;
-        margin-left: 0; 
-    }
-    
-    .block-2,
-    .block-4,
-    .block-6 {
-        margin-right: 0;
-        margin-left: 0; 
-    }
-
-    .block-1,
-    .block-2,
-    .block-3,
-    .block-4 {
-        margin-bottom:24px;
+    .category-block{
+        margin: 0 3px 24px  3px;
+        
     }
     
     .color{
@@ -628,7 +624,7 @@ input{
     /* -----footer  500 ------*/
     .footer{
         height: 148px;
-        margin-top: 30px;
+        margin-top: 6px;
         margin-bottom: 60px;
     }
 
@@ -643,7 +639,7 @@ input{
     }
 
     .line, .twitter{
-        margin-right: 14px;
+        margin-right: 10%;
     }
 }
 
