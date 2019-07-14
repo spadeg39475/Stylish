@@ -79,7 +79,7 @@ function createProduct(res){
         //product Img
         productImg = document.createElement('img');
         productImg.classList.add("sample");
-        productImg.src = item.images[0];
+        productImg.src = item.main_image;
 
         // product name
         productName = document.createElement('p');
@@ -114,5 +114,4 @@ function createProduct(res){
         categoryBlock.appendChild(productBlock);
     })
 }
-
 
