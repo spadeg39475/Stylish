@@ -10,8 +10,12 @@ function changeAPI(type){
 }
 
 function changeProductType(productType){
-    
-    event.target.classList.toggle('isActive');
+    // active menu add color
+    let menuAnchar = document.querySelectorAll('.nav-left .menu a')
+    menuAnchar.forEach(a => a.classList.remove('isActive'));
+    event.target.classList.add('isActive');
+
+    //call api
     stylish.productType = productType;
     removeProduct();
     callAPI(stylish, createProduct);
