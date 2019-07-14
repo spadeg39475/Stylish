@@ -4,32 +4,16 @@ let stylish = {
     productType: "all" 
 }
 
+
+window.addEventListener("DOMContentLoaded", callAPI(stylish, createProduct));
+
 function changeAPI(type){
     stylish.api = type;
     stylish.productType = "";
 }
 
-function changeProductType(productType){
-    // active menu add color
-    let menuAnchar = document.querySelectorAll('.nav-left .menu a')
-    menuAnchar.forEach(a => a.classList.remove('isActive'));
-    event.target.classList.add('isActive');
 
-    //call api
-    stylish.productType = productType;
-    removeProduct();
-    callAPI(stylish, createProduct);
-  
-}
-
-function removeProduct(){
-    let category = document.querySelector('.category');
-    while(category.firstChild){
-        category.removeChild(category.firstChild);
-    }
-}
-
-
+//call API
 function callAPI(stylish, callback){
 
     let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
@@ -43,9 +27,35 @@ function callAPI(stylish, callback){
     });
 }
 
+//change menu 
+function changeProductType(productType){
+
+        let e = event.target;
+       
+        //remove old product
+        removeProduct();
+
+        // active menu add color
+        let menuAnchar = document.querySelectorAll('.nav-left .menu a')
+        menuAnchar.forEach(a => a.classList.remove('isActive'));
+        e.classList.add('isActive');
+
+        //call api
+        stylish.productType = productType;
+        callAPI(stylish, createProduct);       
+}
 
 
+//移除category
+function removeProduct(){
+    let category = document.querySelector('.category');
+    while(category.firstChild){
+        category.removeChild(category.firstChild);
+    }
+}
 
+
+//生成category
 function createProduct(res){
     let  categoryBlock = document.querySelector('.category');
     let  productBlock, newTag, productImg, colorDiv, colorBlock, productName, productPrice;
@@ -95,8 +105,7 @@ function createProduct(res){
         productPrice.classList.add("sample-price");
         productPrice.textContent ='TWD.'+ item.price.toString();
         
-
-        
+        //append child
         productBlock.appendChild(productImg);
         productBlock.appendChild(colorDiv);
         productBlock.appendChild(productName);
@@ -105,9 +114,5 @@ function createProduct(res){
         categoryBlock.appendChild(productBlock);
     })
 }
-
-
-
-callAPI(stylish, createProduct);
 
 
