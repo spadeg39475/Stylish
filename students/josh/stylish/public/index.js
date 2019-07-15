@@ -4,32 +4,67 @@ let stylish = {
     productType: "all" 
 }
 
+//------　api url
+let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
 
-window.addEventListener("DOMContentLoaded", callAPI(stylish, createProduct));
+//-------trigger element
+let isLoading = false;
+let isEnd = false;
+let triggerDistance =200 ;
 
-function changeAPI(type){
-    stylish.api = type;
-    stylish.productType = "";
-}
+
+// homepage 
+window.addEventListener("DOMContentLoaded", callAPI(createProduct));
+
 
 
 //call API
-function callAPI(stylish, callback){
+function callAPI(callback){
 
-    let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
+    if ( !isLoading && !isEnd  ) {
+        
+        isLoading = true;
 
-    fetch(src).then((res) => {
-        return res.json(); 
-    }).then((result) => {
-        callback(result);
-    }).catch(function(err){
+        fetch(src)
+        .then((res) => {
+
+            isLoading = false;
+            return res.json(); 
+         }).then((result) => {
+
+            if(result.paging){
+                src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType + "?paging=" + result.paging; 
+            }
+            else if( stylish.productType === "search" && result.data.length === 0){
+                 err_page();
+            }
+            else if (!result.paging){
+                isEnd = true;
+            }
+            callback(result);
+
+        }).catch(function(err){
         console.log("Fetch 錯誤:"+err);
-    });
+        });
+    }
 }
 
-//change menu 
-function changeProductType(productType){
+//----paging scroll -----
+function scroll(){
+    let container = document.querySelector('.category');
+    let distance  = container.getBoundingClientRect().bottom - window.innerHeight;
+    
+    if( distance < triggerDistance){
+        callAPI(createProduct);
+    }
+}
 
+window.addEventListener('scroll', scroll);
+
+
+//-----change menu 
+function changeProductType(productType){
+        isEnd = false;  // 解除paging end false 
         let e = event.target;
        
         //remove old product
@@ -42,7 +77,8 @@ function changeProductType(productType){
 
         //call api
         stylish.productType = productType;
-        callAPI(stylish, createProduct);       
+        src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
+        callAPI(createProduct);       
 }
 
 
@@ -114,4 +150,59 @@ function createProduct(res){
         categoryBlock.appendChild(productBlock);
     })
 }
+
+
+//------------search ----------------
+function search(value){
+    isEnd = false;
+    stylish.productType = "search";
+    src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType + "?keyword=" +value;
+ 
+    
+    removeProduct();
+    callAPI(createProduct);
+
+    let input = document.querySelector('#search');
+    input.value ="";
+}
+
+
+function err_page(){
+
+    removeProduct()
+
+    let  category = document.querySelector('.category');
+    let  productBlock = document.createElement('div');;
+    productBlock.textContent = "請重新搜尋";
+    category.appendChild(productBlock);
+}
+
+
+// ----mobile search ----------//
+let mobile_search = document.querySelector('.mobile-search');
+let mobile_search_input = document.querySelector('.mobile-search-input');
+
+mobile_search.addEventListener('click', () =>{
+    mobile_search.classList.add('hidden');
+    mobile_search_input.classList.remove('hidden');
+    mobile_search_input.focus();
+})
+
+mobile_search_input.addEventListener('keypress', (e)=>{
+    if(e.key == "Enter"){
+        search(mobile_search_input.value);
+        mobile_search_input.blur();
+        mobile_search_input.value ="";
+        mobile_search_input.classList.add('hidden');
+        mobile_search.classList.remove('hidden');
+    }
+})
+
+mobile_search_input.addEventListener('blur', () =>{
+    mobile_search_input.classList.add('hidden');
+    mobile_search.classList.remove('hidden');
+})
+
+// ----mobile search ----------//
+
 
