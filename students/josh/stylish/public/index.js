@@ -9,19 +9,19 @@ let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish
 
 //-------trigger element
 let isLoading = false;
-let isEnd = false;
 let triggerDistance =200 ;
 
 
-// homepage 
-window.addEventListener("DOMContentLoaded", callAPI(createProduct));
 
+
+// homepage
+window.addEventListener("DOMContentLoaded", callAPI(createProduct));
 
 
 //call API
 function callAPI(callback){
 
-    if ( !isLoading && !isEnd  ) {
+    if ( !isLoading ) {
         
         isLoading = true;
 
@@ -33,14 +33,17 @@ function callAPI(callback){
          }).then((result) => {
 
             if(result.paging){
-                src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType + "?paging=" + result.paging; 
+                src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType + "?paging=" + result.paging;
+                window.addEventListener('scroll', scroll); 
             }
             else if( stylish.productType === "search" && result.data.length === 0){
                  err_page();
             }
             else if (!result.paging){
-                isEnd = true;
+                src =""
+                window.removeEventListener('scroll', scroll);
             }
+            aaa = result
             callback(result);
 
         }).catch(function(err){
@@ -49,12 +52,15 @@ function callAPI(callback){
     }
 }
 
+
+
 //----paging scroll -----
 function scroll(){
     let container = document.querySelector('.category');
     let distance  = container.getBoundingClientRect().bottom - window.innerHeight;
     
     if( distance < triggerDistance){
+
         callAPI(createProduct);
     }
 }
@@ -64,7 +70,6 @@ window.addEventListener('scroll', scroll);
 
 //-----change menu 
 function changeProductType(productType){
-        isEnd = false;  // 解除paging end false 
         let e = event.target;
        
         //remove old product
@@ -75,7 +80,8 @@ function changeProductType(productType){
         menuAnchar.forEach(a => a.classList.remove('isActive'));
         e.classList.add('isActive');
 
-        //call api
+        //call api\
+        stylish.api = "products";
         stylish.productType = productType;
         src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
         callAPI(createProduct);       
@@ -154,7 +160,7 @@ function createProduct(res){
 
 //------------search ----------------
 function search(value){
-    isEnd = false;
+    
     stylish.productType = "search";
     src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType + "?keyword=" +value;
  
@@ -204,5 +210,113 @@ mobile_search_input.addEventListener('blur', () =>{
 })
 
 // ----mobile search ----------//
+
+
+
+// ------- 封面 Img ------------//
+let campaigns;
+let content_array;
+let main_block = document.querySelector('.main-block');
+let count = 0;
+
+
+window.addEventListener("DOMContentLoaded", createCampaignImg());
+
+//create first campaignImg
+function createCampaignImg(){
+
+    src = "https://api.appworks-school.tw/api/1.0/marketing/campaigns";
+    
+    fetch(src)
+    .then( res => {return res.json()})
+    .then( result => {
+        campaigns = result;
+        setCampaignImg(result, 0);
+        count++ ;
+    })
+    .catch( err => {
+        console.log("Fetch 錯誤:"+err);
+    });
+}
+
+// set Campaign Img
+function setCampaignImg(res, i) {
+   
+    removeContent();
+    removeCircle();
+    
+    // set img
+    let main_block = document.querySelector('.main-block');
+    main_block.style.backgroundImage = `url(https://api.appworks-school.tw${res.data[i].picture})`; 
+    
+    // set story
+    content_array = res.data[i].story.split(/\r\n/);
+
+    let content = document.querySelector('.content');
+    
+    content_array.forEach( (item,index) =>{
+        let line;
+
+        if (index === 3){
+            line = document.createElement('span')
+            line.classList.add('content-bot');
+        }else{
+             line = document.createElement('p');
+             line.classList.add('content-line');
+             
+        }   
+        line.textContent = item;    
+        content.appendChild(line);
+    })    
+    // -----------------------------------
+
+    
+    let circleBlock = document.querySelector('.circle-block');
+    circleBlock.classList.add('circle-block');
+
+    // create circle selector
+    campaigns.data.forEach( (item,index) =>{
+        let newCircle = document.createElement('div');
+        newCircle.classList.add('circle');
+        if(index === i){
+            newCircle.classList.add('isActive');
+        }
+        circleBlock.appendChild(newCircle);
+
+        newCircle.addEventListener('click', () =>{
+            count = index;
+            setCampaignImg(campaigns, count);
+        });
+    })
+}
+
+
+
+// 每 10 秒切換圖片
+setInterval(function(){
+    if(count !== 2){
+        count++;
+        setCampaignImg(campaigns, count);
+    }else{
+        count = 0;
+        setCampaignImg(campaigns, count);
+    }
+}, 10000 )
+
+// remove  story
+function removeContent(){
+    let content = document.querySelector('.content');
+    while(content.firstChild){
+        content.removeChild(content.firstChild);
+    }
+}
+
+// remove circle 
+function removeCircle(){
+    let circleBlock = document.querySelector('.circle-block');
+    while(circleBlock.firstChild){
+        circleBlock.removeChild(circleBlock.firstChild);
+    }
+}
 
 
