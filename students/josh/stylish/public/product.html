@@ -12,10 +12,11 @@
         <div class="nav">
             <div class="nav-logo">
                 <a href="#" id="all" onclick="changeProductType(id)"><img id="logo" src="./images/logo.png" alt="logo" ></a>
-                <input type="text" name="search" class="mobile-search-input hidden">
-                <img class="mobile-search" src="./images/search.png" alt="search">
             </div>
-
+            <div class="mobile-search">
+                <input type="text" name="search" class="mobile-search-input hidden">
+                <img class="mobile-search-img" src="./images/search.png" alt="search">
+            </div>
             
             <div class="nav-menu">
                 <div class="nav-left">
@@ -30,11 +31,16 @@
 
                 <div class="nav-right">
                     <input type="text" name="search" id="search" onkeypress="if(event.keyCode==13){search(value)}">
-                    <img class="cart" src="./images/cart.png" alt="cart">
-                    <img class="member" src="./images/member.png" alt="member">
+                    <div class="cart item">
+                        <img  src="./images/cart.png" alt="cart">
+                    </div>
+                    <div class="member item">
+                        <img  src="./images/member.png" alt="member">
+                    </div>
                 </div>  
-            </div>    
-            
+
+            </div>  
+
         </div>
         <div class="base"></div>
     </nav>
@@ -110,10 +116,10 @@
 
 
             <div class="separator">
-                <div class="title">更多產品資訊</div>
+                <div class="title">細部說明</div>
                 <div class="dash"></div>
             </div>
-            
+
             <div class="more-content">
                 <div id="product-story" class="story">
                     O.N.S is all about options, which is why we took our staple polo shirt and upgraded it with slubby linen jersey, making it even lighter for those who prefer their summer style extra-breezy.
