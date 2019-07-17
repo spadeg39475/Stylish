@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./product.css">
+    <title>Stylish 產品資訊</title>
+</head>
+<body>
+    <nav>
+        <div class="nav">
+            <div class="nav-logo">
+                <a href="#" id="all" onclick="changeProductType(id)"><img id="logo" src="./images/logo.png" alt="logo" ></a>
+                <input type="text" name="search" class="mobile-search-input hidden">
+                <img class="mobile-search" src="./images/search.png" alt="search">
+            </div>
+
+            
+            <div class="nav-menu">
+                <div class="nav-left">
+                    <ul class="menu">
+                        <li><a href="#" id ="women" onclick="changeProductType(id)">女裝</a> </li>
+                        <li>|</li>
+                        <li><a href="#" id ="men" onclick="changeProductType(id)">男裝</a></li>
+                        <li>|</li>
+                        <li><a href="#" id ="accessories" onclick="changeProductType(id)">配件</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-right">
+                    <input type="text" name="search" id="search" onkeypress="if(event.keyCode==13){search(value)}">
+                    <img class="cart" src="./images/cart.png" alt="cart">
+                    <img class="member" src="./images/member.png" alt="member">
+                </div>  
+            </div>    
+            
+        </div>
+        <div class="base"></div>
+    </nav>
+
+
+
+
+    <div class="fixed-bar">
+        <div class="fixed-block">
+            <img src="./images/cart-mobile.png" alt="cart">
+            <span>購物車</span>
+        </div>
+        <span>|</span>
+        <div class="fixed-block">
+                <img src="./images/member-mobile.png" alt="member">
+                <span>會員</span>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="view">
+            <div id="product-main-img" class="main-image">
+                <img src="https://api.appworks-school.tw/assets/201807201824/main.jpg">
+            </div>
+
+            <div class="details">
+                <div id="product-name" class="name">前開衩扭結洋裝</div>
+                <div id="product-id" class="id">201807201824</div>
+                <div id="product-price" class="price">TWD.799</div>
+                
+                <div id="product-colors" class="colors">
+                    <span class="title">顏色 |</span>
+                    <div class="color current"></div>
+                    <div class="color"></div>
+                </div>
+
+                <div id="product-sizes" class="sizes">
+                    <span class="title">尺寸 |</span>
+                    <div class="size current">S</div>
+                    <div class="size">M</div>
+                    <div class="size">L</div>
+                </div>
+
+                <div class="quantity">
+                    <span class="title">數量 |</span>
+                    <div id="quantity-count" class="counter">
+                        <div id="minus" class="op">-</div>
+                        <div class="value">1</div>
+                        <div id="plus" class="op">+</div>
+                    </div>
+                </div>
+
+                <div class="add-cart">
+                    <button class="add-cart-btn">加入購物車</button>
+                </div>
+
+                <div id="product-note" class="note">
+                    實品顏色依單品照為主
+                    <br>
+                    <br>
+                    綿 100%
+                    <br>
+                    厚薄：薄
+                    <br>
+                    彈性：無
+                    <br>
+                    <br>
+                    清洗：手洗，溫水
+                    <br>
+                    產地：中國
+                </div>
+            </div>
+
+
+            <div class="separator">
+                <div class="title">更多產品資訊</div>
+                <div class="dash"></div>
+            </div>
+            
+            <div class="more-content">
+                <div id="product-story" class="story">
+                    O.N.S is all about options, which is why we took our staple polo shirt and upgraded it with slubby linen jersey, making it even lighter for those who prefer their summer style extra-breezy.
+                </div>
+                <div class="product-image">
+                    <img src="https://api.appworks-school.tw/assets/201807201824/0.jpg">  
+                </div>
+                <div  class="story">
+                    O.N.S is all about options, which is why we took our staple polo shirt and upgraded it with slubby linen jersey, making it even lighter for those who prefer their summer style extra-breezy.
+                </div>
+                <div class="product-image">
+                    <img src="https://api.appworks-school.tw/assets/201807201824/1.jpg">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="footer">
+            <div class="footer-wrap">
+                <ul class="footer-menu">
+                    <li>關於 Stylish</li>
+                    <span>|</span>
+                    <li>服務條款</li>
+                    <span>|</span>
+                    <li>隱私政策</li>
+                    <span>|</span>
+                    <li>聯絡我們</li>
+                    <span>|</span>
+                    <li>FAQ</li>
+                </ul>
+            
+                <div class="footer-contact">
+                        <img class="line" src="./images/line.png" alt="line">
+                        <img class="twitter" src="./images/twitter.png" alt="twitter">
+                        <img class="facebook" src="./images/facebook.png" alt="facebook">
+                </div>
+
+                <span class="footer-tag"> ©2018. All rights reserved</span>  
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
