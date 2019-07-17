@@ -249,6 +249,11 @@ function setCampaignImg(res, i) {
     let main_block = document.querySelector('.main-block');
     main_block.style.backgroundImage = `url(https://api.appworks-school.tw${res.data[i].picture})`; 
     
+
+    //link to product id  
+    let campaignLink = document.querySelector('.campaign-link');
+    campaignLink.setAttribute("href", `#id=${res.data[i].product_id}`); 
+
     // set story
     content_array = res.data[i].story.split(/\r\n/);
 

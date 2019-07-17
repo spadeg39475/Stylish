@@ -126,7 +126,10 @@ input{
     justify-content: center;
     align-items: flex-end;
 }
-
+.main-block a{
+    width: 100%;
+    height: 100%;
+}
 .main-block .isActive{
     background-color: #8b572a;
 }
@@ -156,6 +159,7 @@ input{
     height:50px;
     display: flex;
     justify-content: center;
+    position: absolute;
 }
 .circle{
     display: inline-block;
