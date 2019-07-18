@@ -165,13 +165,24 @@ ul li {
 
 .color, .size{
     display: inline-block;
+    margin: 0 10px;
 }
 
 .color {
     width:24px;
     height: 24px;
-    background-color: #3f3a3a;
-    vertical-align: text-bottom;   
+    background-color: #5bc2a3;
+    vertical-align: text-bottom;
+    margin: 0 12px;   
+}
+
+.colors .current {
+    outline: 1px solid #979797;
+    outline-offset: 6px;
+    margin-right: 20px;
+}
+.color2{
+    background-color: rgb(53, 74, 129);
 }
 
 .size {
@@ -183,6 +194,11 @@ ul li {
     line-height: 34px;
     letter-spacing: normal;
     margin-right: 10px;
+}
+
+.sizes .current{
+    color: #ffffff;
+    background-color: #3f3a3a;
 }
 
 .details .quantity .counter {
@@ -371,11 +387,12 @@ ul li {
 
     .nav-menu{
         width: 100vw;
-        border-top: 10px solid #3f3a3a; 
+        position: absolute;
+        top: 140px;
     }
     
-    .base{
-        display: none;
+    .footer-wrap {
+        width:80%;
     }
 
 }
@@ -394,13 +411,12 @@ ul li {
         position: relative;
     }
 
-
     .mobile-search{
-        display: block;
+        display: flex;
         position: absolute;
-        top: 5px;
         right: 10px;
-        z-index: 5;
+        top: 5px;
+        z-index: 1;
     }
 
     .mobile-search-input {
@@ -419,10 +435,6 @@ ul li {
         justify-content: center;
         align-items: center;
     }
-
-    .nav-menu{
-        border: none;
-    }
     
     .menu,
     .nav-left,
@@ -434,6 +446,9 @@ ul li {
         width:100%;
     }
 
+    .nav-menu {
+        position: static;
+    }
     .nav-left{
         height: 50px;
         background-color: #333333;
@@ -464,8 +479,10 @@ ul li {
     /* -----main 800---------- */
     .main{
        padding-top: 0;
+       margin-top: 0;
     }
     
+
     .main-image {
         width: 50%;
         margin: 0;
@@ -668,7 +685,6 @@ ul li {
         margin-top: 18px;
     }
 
-}
 
     .separator {
         width: 90%;
@@ -686,21 +702,21 @@ ul li {
         width: 70%;
     }
 
-.more-content {
-    margin: 0 24px;
+    .more-content {
+        margin: 0 24px;
+    }
+
+    .more-content .story {
+        font-size: 14px;
+        line-height: 1.71;
+    }
+
+    .more-content img {
+        width: 100%;
+        margin: 20px 0;
+    }
+
 }
-
-.more-content .story {
-    font-size: 14px;
-    line-height: 1.71;
-}
-
-.more-content img {
-    width: 100%;
-    margin: 20px 0;
-}
-
-
 
 
 @media (max-width: 500px ){
