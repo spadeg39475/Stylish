@@ -185,7 +185,7 @@ function err_page(){
 
 
 // ----mobile search ----------//
-let mobile_search = document.querySelector('.mobile-search');
+let mobile_search = document.querySelector('.mobile-search-img');
 let mobile_search_input = document.querySelector('.mobile-search-input');
 
 mobile_search.addEventListener('click', () =>{
