@@ -76,6 +76,11 @@ function createDetails(res){
         color.classList.add('color');
         color.style.backgroundColor = "#" + item.code ;
         details_product_colors.appendChild(color);
+
+        color.addEventListener('click', event =>{
+            removeCurrentColor();
+            event.target.classList.add('current');
+        })
     });
 
 
@@ -88,6 +93,11 @@ function createDetails(res){
         size.classList.add('size');
         size.textContent = item;
         details_product_sizes.appendChild(size);
+
+        size.addEventListener('click', event =>{
+            removeCurrentSize();
+            event.target.classList.add('current');
+        })
     })
 
 
@@ -111,6 +121,19 @@ function createDetails(res){
     });
 }
 
+function removeCurrentColor(){
+   let children = Array.from(details_product_colors.children);
+   children.forEach( i =>{
+       i.classList.remove('current');
+   })  
+}
+
+function removeCurrentSize(){
+    let children = Array.from(details_product_sizes.children);
+    children.forEach( i =>{
+        i.classList.remove('current');
+    })  
+ }
 
 //------------search ----------------
 
@@ -141,3 +164,5 @@ mobile_search_input.addEventListener('blur', () =>{
 })
 
 // ----mobile search ----------//
+
+
