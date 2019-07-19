@@ -165,9 +165,12 @@ function removeCurrentSize(){
     })  
  }
 
+
+
 // =============================================
 //        Quantity control functions
 // =============================================
+
 function plus(){
     count++;
     quantity_count_value.textContent = count;

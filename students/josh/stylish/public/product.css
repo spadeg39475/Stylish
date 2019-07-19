@@ -169,16 +169,13 @@ ul li {
     display:inline-block;
     /* background-color: #5bc2a3; */
     vertical-align: text-bottom;
-    margin: 0 18px;
+    margin: 0 14.5px;
     cursor: pointer;   
 }
 
 .colors .current {
     outline: 1px solid #979797;
     outline-offset: 6px;
-}
-.color2{
-    background-color: rgb(53, 74, 129);
 }
 
 .size {
