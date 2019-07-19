@@ -25,7 +25,8 @@ let texture = document.querySelector('#texture');
 let description = document.querySelector('#description');
 let wash = document.querySelector('#wash');
 let place = document.querySelector('#place');
-let quantity_count = document.querySelector('#count');
+let quantity_count = document.querySelector('#quantity-count');
+let quantity_count_value = document.querySelector('#count');
 let btn_plus = document.querySelector('#plus');
 let btn_minus = document.querySelector('#minus');
 let count = 1;
@@ -96,8 +97,9 @@ function createDetails(res){
             removeCurrentColor();
             event.target.classList.add('current');
             currentColor = item.code;
-            getStock();
             qty_reset();
+            getStock();
+            checkStock();
         })
     });
 
@@ -117,13 +119,15 @@ function createDetails(res){
             removeCurrentSize();
             event.target.classList.add('current');
             currentSize = item;
-            getStock();
             qty_reset();
+            getStock();
+            checkStock();
         })
     })
 
     //get stock quantity
     getStock();
+    checkStock();
     
     // note
     note.textContent = res.data.note;
@@ -166,13 +170,13 @@ function removeCurrentSize(){
 // =============================================
 function plus(){
     count++;
-    quantity_count.textContent = count;
+    quantity_count_value.textContent = count;
 }
 
 function minus(){
     if(count > 1){
         count--;
-        quantity_count.textContent = count;
+        quantity_count_value.textContent = count;
     }
 }
 
@@ -187,10 +191,22 @@ function getStock(){
     )[0].stock;
 }
 
+function checkStock(){
+    if (stock_qty === 0){
+        quantity_count.classList.add('disabled');
+        quantity_count_value.textContent = 0;
+        count = 0;
+    }else if ( count === stock_qty){
+        btn_plus.classList.add('disabled');
+    }
+}
+
 
 function qty_reset() {
     count = 1 ; 
-    quantity_count.textContent = 1;
+    quantity_count_value.textContent = 1;
+    quantity_count.classList.remove('disabled');
+    btn_plus.classList.remove('disabled');
 }
 
 
@@ -198,11 +214,16 @@ btn_plus.addEventListener('click', () =>{
     if (count < stock_qty){ 
         plus();
     }
+    checkStock();
 })
 
 
 btn_minus.addEventListener('click', () =>{
+    if(stock_qty !== 1){
+        btn_plus.classList.remove('disabled');
+    }
     minus();
+    
 })
 
 // =============================================

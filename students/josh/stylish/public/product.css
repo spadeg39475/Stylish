@@ -231,6 +231,10 @@ ul li {
     letter-spacing: normal;
 }
 
+.disabled{
+    opacity: 0.5;
+}
+
 .details .add-cart-btn {
     width: 360px;
     height: 60px;
