@@ -37,10 +37,9 @@ let currentColor, currentSize;
 
 
 
-
+// url params
 let productURL = new URL(location.href);
 const { href, protocol, hostname, pathname, search, searchParams } = productURL;
-
 
 // call detail api
 function callDetail(callback){

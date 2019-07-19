@@ -4,8 +4,18 @@ let stylish = {
     productType: "all" 
 }
 
+
+// url params
+let stylishURL = new URL(location.href);
+const { href, protocol, hostname, pathname, search, searchParams } = stylishURL;
+let params = stylishURL.searchParams;
+for(let pair of params.entries()){
+    stylish.productType = pair[1];
+}
+
 //------　api url
 let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
+
 
 //-------trigger element
 let isLoading = false;
@@ -286,7 +296,7 @@ function createProduct(res){
 
 
 //------------search ----------------
-function search(value){
+function searching(value){
     
     stylish.productType = "search";
     src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType + "?keyword=" +value;
@@ -323,7 +333,7 @@ mobile_search.addEventListener('click', () =>{
 
 mobile_search_input.addEventListener('keypress', (e)=>{
     if(e.key == "Enter"){
-        search(mobile_search_input.value);
+        searching(mobile_search_input.value);
         mobile_search_input.blur();
         mobile_search_input.value ="";
         mobile_search_input.classList.add('hidden');
