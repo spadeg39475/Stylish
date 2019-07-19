@@ -9,7 +9,7 @@
 
 //------宣告 --------
 let isLoading = false;
-let datails;
+let details;
 
 let details_main_image =  document.querySelector('#main-img');
 let details_product_name = document.querySelector('#product-name');
@@ -25,6 +25,16 @@ let texture = document.querySelector('#texture');
 let description = document.querySelector('#description');
 let wash = document.querySelector('#wash');
 let place = document.querySelector('#place');
+let quantity_count = document.querySelector('#count');
+let btn_plus = document.querySelector('#plus');
+let btn_minus = document.querySelector('#minus');
+let count = 1;
+let stock, stock_qty;  //紀錄庫存數量
+
+
+let currentColor, currentSize;
+
+
 
 
 let productURL = new URL(location.href);
@@ -70,9 +80,14 @@ function createDetails(res){
     //color 
     res.data.colors.forEach( (item, index) => {
         let color = document.createElement('div');
-        if( index === 0){
-            color.classList.add('current');
+        if (item.code === 'FFFFFF' ){
+           color.style.border = "1px solid #979797";
         }
+        if ( index === 0){
+            color.classList.add('current');
+            currentColor = item.code;
+        }
+      
         color.classList.add('color');
         color.style.backgroundColor = "#" + item.code ;
         details_product_colors.appendChild(color);
@@ -80,6 +95,9 @@ function createDetails(res){
         color.addEventListener('click', event =>{
             removeCurrentColor();
             event.target.classList.add('current');
+            currentColor = item.code;
+            getStock();
+            qty_reset();
         })
     });
 
@@ -89,6 +107,7 @@ function createDetails(res){
         let size = document.createElement('div');
         if( index === 0){
             size.classList.add('current');
+            currentSize = item;
         }
         size.classList.add('size');
         size.textContent = item;
@@ -97,10 +116,15 @@ function createDetails(res){
         size.addEventListener('click', event =>{
             removeCurrentSize();
             event.target.classList.add('current');
+            currentSize = item;
+            getStock();
+            qty_reset();
         })
     })
 
-
+    //get stock quantity
+    getStock();
+    
     // note
     note.textContent = res.data.note;
     texture.textContent = res.data.texture;
@@ -121,6 +145,8 @@ function createDetails(res){
     });
 }
 
+
+
 function removeCurrentColor(){
    let children = Array.from(details_product_colors.children);
    children.forEach( i =>{
@@ -134,6 +160,52 @@ function removeCurrentSize(){
         i.classList.remove('current');
     })  
  }
+
+// =============================================
+//        Quantity control functions
+// =============================================
+function plus(){
+    count++;
+    quantity_count.textContent = count;
+}
+
+function minus(){
+    if(count > 1){
+        count--;
+        quantity_count.textContent = count;
+    }
+}
+
+
+
+function getStock(){
+    stock = details.data.variants;
+
+    // get stock quantity
+    stock_qty = stock.filter( (el) => 
+        el.color_code === currentColor && el.size === currentSize
+    )[0].stock;
+}
+
+
+function qty_reset() {
+    count = 1 ; 
+    quantity_count.textContent = 1;
+}
+
+
+btn_plus.addEventListener('click', () =>{
+    if (count < stock_qty){ 
+        plus();
+    }
+})
+
+
+btn_minus.addEventListener('click', () =>{
+    minus();
+})
+
+// =============================================
 
 //------------search ----------------
 
