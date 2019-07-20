@@ -1,11 +1,9 @@
 
-// let stylish = {
-//     api: "products",
-//     productType: "details" 
-// }
+let stylish = {
+    api: "products",
+    productType: "details" 
+}
 
-// //------　api url
-// let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
 
 //------宣告 --------
 let isLoading = false;
@@ -31,7 +29,6 @@ let btn_plus = document.querySelector('#plus');
 let btn_minus = document.querySelector('#minus');
 let count = 1;
 let stock, stock_qty;  //紀錄庫存數量
-
 
 let currentColor, currentSize;
 
@@ -228,12 +225,37 @@ btn_minus.addEventListener('click', () =>{
     
 })
 
-// =============================================
-
-//------------search ----------------
 
 
-// ----mobile search ----------//
+
+// ===============================================================
+//          search 
+// ===============================================================
+
+function searching(value){
+    stylish.api = "products"
+    stylish.productType = "search";
+    src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType + "?keyword=" +value;
+ 
+    let input = document.querySelector('#search');
+    input.value ="";
+
+    removeProduct();
+    callAPI(createProduct);
+
+}
+
+
+function err_page(){
+
+    removeProduct()
+    let  productBlock = document.createElement('div');;
+    productBlock.textContent = "請重新搜尋";
+    categoryBlock.appendChild(productBlock);
+}
+
+
+// ----mobile search ----------
 let mobile_search = document.querySelector('.mobile-search-img');
 let mobile_search_input = document.querySelector('.mobile-search-input');
 
@@ -245,7 +267,7 @@ mobile_search.addEventListener('click', () =>{
 
 mobile_search_input.addEventListener('keypress', (e)=>{
     if(e.key == "Enter"){
-        search(mobile_search_input.value);
+        searching(mobile_search_input.value);
         mobile_search_input.blur();
         mobile_search_input.value ="";
         mobile_search_input.classList.add('hidden');
@@ -258,6 +280,6 @@ mobile_search_input.addEventListener('blur', () =>{
     mobile_search.classList.remove('hidden');
 })
 
-// ----mobile search ----------//
+// =======================================================================
 
 
