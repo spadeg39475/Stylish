@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style/cart.css">
+    <title>Stylish 購物車</title>
+</head>
+<body>
+        <nav>
+            <div class="nav">
+                <div class="nav-logo">
+                    <a href="./" id="all"><img id="logo" src="./style/images/logo.png" alt="logo" ></a>
+                </div>
+                <div class="mobile-search">
+                    <input type="text" name="search" class="mobile-search-input hidden">
+                    <img class="mobile-search-img" src="./style/images/search.png" alt="search">
+                </div>
+                    
+                <div class="nav-menu">
+                    <div class="nav-left">
+                        <ul class="menu">
+                            <li><a href="./?tag=women" id ="women" >女裝</a> </li>
+                            <li>|</li>
+                            <li><a href="./?tag=men" id ="men" >男裝</a></li>
+                            <li>|</li>
+                            <li><a href="./?tag=accessories" id ="accessories" >配件</a></li>
+                        </ul>
+                    </div>
+        
+                    <div class="nav-right">
+                        <input type="text" name="search" id="search" onkeypress="if(event.keyCode==13){search(value)}">
+                        <div class="cart item">
+                            <div class="cart-qty"></div>
+                        </div>
+                        <div class="member item">
+                            <img  src="./style/images/member.png" alt="member">
+                        </div>
+                    </div>  
+        
+                </div>  
+        
+            </div>
+            <div class="base"></div>
+        </nav>    
+
+        <div class="fixed-bar">
+                <div class="fixed-block">
+                    <div class="mobile-cart item">
+                        <div class="mobile-cart-qty"></div>
+                    </div>    
+                    <span>購物車</span>
+                </div>
+                <span>|</span>
+                <div class="fixed-block">
+                    <img src="./style/images/member-mobile.png" alt="member">
+                    <span>會員</span>
+                </div>
+        </div>
+
+        <div class="main">
+            <div class="view">
+                <div class="Cart">
+
+                    <div class="title row">
+                        <div class="variant">購物車</div>
+                        <div class="qty">數量</div>
+                        <div class="price">單價</div>
+                        <div class="subtotal">小計</div>
+                        <div class="remove"></div>
+                    </div>
+                    <div class="cart-list">
+                        <div class="row">
+
+                            <div class="variant">
+                                <div class="picture">
+                                    <img src="https://api.appworks-school.tw/assets/201807202140/main.jpg">
+                                </div>
+                                <div class="details">
+                                    透肌澎澎防曬襯衫
+                                    <br>
+                                    201807202140
+                                    <br>
+                                    <br>
+
+                                </div>
+                            </div>
+
+                            <div class="qty">
+                                <select>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+
+                            <div class="price">NT. 599</div>
+                            <div class="subtotal">NT. 599</div>
+                            <div class="remove">
+                                <img src="./style/images/cart-remove.png">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="target">
+                    <div class="country">
+                        <span class="text">配送國家</span>
+                        <select>
+                            <option>台灣或離島</option>
+                        </select>
+                    </div>
+                    <div class="paymethod">
+                        <span class="text">付款方式</span>
+                        <select>
+                            <option>信用卡付款</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="reminder">
+                    <div>提醒您：</div>
+                    <div>● 請填寫正確收件人資訊，避免包裹配送不達</div>
+                    <div>● 請填寫正確收件人姓名 ( 與證件相符 )，避免無法領取</div>
+                </div>
+
+                <div class="recipient">
+                    <div class="title">收件資料</div>
+                    <div class="line">
+                        <div class="text">收件人姓名</div>
+                        <input type="text" id="recipient-name">
+                    </div>
+                    <div class="line">
+                        <div class="text">Email</div>
+                        <input type="text" id="recipient-email">
+                    </div>
+                    <div class="line">
+                        <div class="text">手機號碼</div>
+                        <input type="text" id="recipient-phone">
+                    </div>
+                    <div class="line">
+                        <div class="text">收件地址</div>
+                        <input type="text" id="recipient-address">
+                    </div>
+                    <div class="line">
+                        <div class="text">配送時間</div>
+                    </div>
+                </div>
+
+                <div class="payment">
+                    <div class="title">付款資料</div>
+                    <div class="line">
+                        <div class="text">信用卡號碼</div>
+                        <input type="text" id="card-number">
+                    </div>
+                    <div class="line">
+                        <div class="text">有效期限</div>
+                        <input type="text" id="card-expiration-date">
+                    </div>
+                    <div class="line">
+                        <div class="text">安全碼</div>
+                        <input type="text" id="card-ccv">
+                    </div>
+                </div>
+
+                <div class="confirm">
+                    <div class="row">
+                        <div class="title">總金額</div>
+                        <div class="price">
+                            <span class="nt">NT.</span>
+                            <span id="subtotal">599</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="title">運費</div>
+                        <div class="price">
+                            <span class="nt">NT.</span>
+                            <span id="freight">60</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="separator"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="title">應付金額</div>
+                        <div class="price">
+                            <spna class="nt">NT.</spna>
+                            <span id="total">123</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button id="checkout">確認付款</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <footer>
+            <div class="footer">
+                <div class="footer-wrap">
+                    <ul class="footer-menu">
+                        <li>關於 Stylish</li>
+                        <span>|</span>
+                        <li>服務條款</li>
+                        <span>|</span>
+                        <li>隱私政策</li>
+                        <span>|</span>
+                        <li>聯絡我們</li>
+                        <span>|</span>
+                        <li>FAQ</li>
+                    </ul>
+                    
+                    <div class="footer-contact">
+                            <img class="line" src="./style/images/line.png" alt="line">
+                            <img class="twitter" src="./style/images/twitter.png" alt="twitter">
+                            <img class="facebook" src="./style/images/facebook.png" alt="facebook">
+                    </div>
+        
+                    <span class="footer-tag"> ©2018. All rights reserved</span>  
+                </div>
+            </div>
+        </footer>
+
+
+    
+</body>
+</html>
