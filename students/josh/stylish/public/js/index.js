@@ -4,7 +4,7 @@ let stylish = {
     productType: "all" 
 }
 
-let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
+
 
 
 
@@ -16,6 +16,8 @@ for(let pair of params.entries()){
     stylish.productType = pair[1];
 }
 
+let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
+
 
 let isLoading = false;
 let productlist;
@@ -26,6 +28,7 @@ let  categoryBlock = document.querySelector('.category');
 
 // homepage
 window.addEventListener("DOMContentLoaded", callAPI(createProduct));
+checkNavActive();
 
 
 //call API
@@ -215,6 +218,12 @@ function changeProductType(productType){
         stylish.productType = productType;
         src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
         callAPI(createProduct);       
+}
+
+function checkNavActive(){
+    // let menuAnchar = document.querySelectorAll('.nav-left .menu a')
+    let activeMenu = document.querySelector(`#${stylish.productType}`);
+    activeMenu.classList.add('isActive');
 }
 
 

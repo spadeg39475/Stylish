@@ -94,6 +94,25 @@ ul li {
     margin-right: 10px;
 }
 
+.cart{
+    background-image: url('./images/cart.png');
+}
+
+.cart-qty{
+    text-align: center;
+    background-color: #8b572a;
+    font-weight: bold;
+    border-radius: 50%;
+    color: #ffffff;
+    opacity: 0.8;
+    font-size: 16px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
 .base {
     height: 40px;
     background-color: #333333;

@@ -27,12 +27,15 @@ let quantity_count = document.querySelector('#quantity-count');
 let quantity_count_value = document.querySelector('#count');
 let btn_plus = document.querySelector('#plus');
 let btn_minus = document.querySelector('#minus');
+let btnAddCart = document.querySelector('.add-cart-btn');
 let count = 1;
 let stock, stock_qty;  //紀錄庫存數量
 
-let currentColor, currentSize;
 
+let currentColor, currentColorName, currentSize;
+let product_price;
 
+let newItem;
 
 // url params
 let productURL = new URL(location.href);
@@ -73,6 +76,7 @@ function createDetails(res){
     details_product_id.textContent = res.data.id;
     // price
     details_product_price.textContent = 'TWD.' + res.data.price;
+    product_price = res.data.price;
     
     //color 
     res.data.colors.forEach( (item, index) => {
@@ -83,6 +87,7 @@ function createDetails(res){
         if ( index === 0){
             color.classList.add('current');
             currentColor = item.code;
+            currentColorName =item.name;
         }
       
         color.classList.add('color');
@@ -93,6 +98,7 @@ function createDetails(res){
             removeCurrentColor();
             event.target.classList.add('current');
             currentColor = item.code;
+            currentColorName =item.name;
             qty_reset();
             getStock();
             checkStock();
@@ -225,6 +231,39 @@ btn_minus.addEventListener('click', () =>{
     
 })
 
+
+// ===============================================================
+//          add to cart
+// ===============================================================
+
+function addCart() {
+
+     newItem ={
+        id: details_product_id.textContent,
+      name: details_product_name.textContent,
+      price: product_price,
+      color: {
+        name: currentColorName,
+        code: currentColor
+      },
+      size: currentSize,
+      qty: quantity_count_value.textContent
+    }
+
+    stylishStorage.cart.list.push(newItem);
+    localStorage.setItem('cart', JSON.stringify(stylishStorage.cart));
+}
+
+btnAddCart.addEventListener('click', ()=>{
+    if( stock_qty === 0){
+        alert('此商品已無存貨');
+    }
+    else{
+        alert('已加入購物車!');
+        addCart();
+        showCartNum();
+    }  
+})
 
 
 
