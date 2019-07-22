@@ -235,22 +235,38 @@ btn_minus.addEventListener('click', () =>{
 // ===============================================================
 //          add to cart
 // ===============================================================
-
 function addCart() {
 
-     newItem ={
-        id: details_product_id.textContent,
-      name: details_product_name.textContent,
-      price: product_price,
-      color: {
-        name: currentColorName,
-        code: currentColor
-      },
-      size: currentSize,
-      qty: quantity_count_value.textContent
+    let sameItems = stylishStorage.cart.list.filter( el => 
+        el.id === details_product_id.textContent &&
+        el.color.code === currentColor && 
+        el.size === currentSize); 
+
+    if (sameItems.length > 0){
+        stylishStorage.cart.list.forEach( item => {
+            if ( item.id === details_product_id.textContent &&
+                 item.color.code === currentColor &&
+                 item.size === currentSize ){
+                    item.qty = quantity_count_value.textContent;
+                 }
+        })
+        
+    }else{
+        newItem ={
+            id: details_product_id.textContent,
+            name: details_product_name.textContent,
+            price: product_price,
+            color: {
+                name: currentColorName,
+                code: currentColor
+            },
+            size: currentSize,
+            qty: quantity_count_value.textContent
+        }
+
+        stylishStorage.cart.list.push(newItem);
     }
 
-    stylishStorage.cart.list.push(newItem);
     localStorage.setItem('cart', JSON.stringify(stylishStorage.cart));
 }
 
