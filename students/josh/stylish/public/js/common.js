@@ -44,5 +44,9 @@ function updateStorage(){
 function showCartNum() {
     let cartNum = document.querySelector('.cart-qty');
     cartNum.textContent = JSON.parse(localStorage.cart).list.length;
+
+    let mobileCartNum = document.querySelector('.mobile-cart-qty');
+    mobileCartNum.textContent = JSON.parse(localStorage.cart).list.length;
+
 }
 
