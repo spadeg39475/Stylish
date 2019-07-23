@@ -127,6 +127,10 @@ ul li {
     font-size: 16px;
 }
 
+select{
+    padding-left: 10px;
+}
+
 .view {
     width: 100%;
     max-width: 1160px;
@@ -141,7 +145,6 @@ ul li {
     width: 100%;
     display: flex;
     align-items: center;
-    margin: 0 auto;
 }
 
 .Cart .title {
@@ -152,6 +155,7 @@ ul li {
 .Cart .row .variant {
     width: 50%;
     font-weight: bold;
+    display: flex;
 }
 
 .Cart .row .qty,
@@ -180,18 +184,152 @@ ul li {
     width:100%;
 }
 
+.variant .details{
+    margin-left: 20px;
+    font-weight: normal;
+}
+
+.qty select {
+    width: 80px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #f3f3f3;
+    border: 1px solid #979797;
+}
+
+/* ---- target ----*/
+.main .target {
+    background-color: #e8e8e8;
+    display: flex;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.target .country,
+.target .paymethod {
+   flex: auto;
+}
+
+.target .country .text,
+.target .paymethod .text {
+    margin-right: 20px;
+}
+
+.target .country select,
+.target .paymethod select {
+    width: 170px;
+    height: 30px;
+    background-color: #f3f3f3;
+    padding: 4px;
+    border-radius: 8px;
+}
 
 
 
+.reminder {
+    line-height: 1.63;
+    margin-bottom: 20px;
+}
 
+/* ---- recipient & payment---- */
+.main .recipient {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
+.recipient .title,
+.payment .title {
+    font-weight: bold;
+    padding-bottom: 16px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #3f3a3a;
+}
 
+.recipient .text-line,
+.payment .text-line {
+    display: flex;
+    margin-bottom: 30px;
+    align-items: center;
+}
 
+.recipient .text-line .text,
+.payment .text-line .text{
+    flex:none;
+    width: 150px;
+}
 
+.main .text-line > input{
+    padding: 5px;
+    width: 40%;
+    border-radius: 4px;
+    border: 1px solid #979797;
+}
 
+.time-selector {
+    width: 40%;
+    display:flex;
+    align-items: center;
+}
+.time-selector label {
+    margin-right: 30px;
+}
+.time-selector > input {
+    margin:5px;
+}
 
+.main .payment {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
 
+/* ---- confirm ---- */
+.confirm {
+    padding-top: 40px;
+    border-top: 1px solid #3f3a3a;
+    margin-bottom: 20px;
+}
 
+.confirm .row {
+    justify-content: flex-end;
+    margin-bottom: 30px;
+    align-items: center;
+}
+.confirm .row .price{
+    display: flex;
+    align-items: center;
+    width:120px;
+    justify-content: flex-end;
+}
+
+.confirm .row .title{
+    width: 100px;
+    flex: none;
+    text-align: left;
+}
+
+.confirm .row .separator{
+    height: 1px;
+    background-color: #3f3a3a;
+    width: 240px;
+}
+
+#subtotal, #freight, #total{
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+#checkout {
+    width: 240px;
+    height: 60px;
+    border: 1px solid #979797;
+    background-color: #000000;
+    color: #ffffff;
+    letter-spacing: 4px;
+    cursor: pointer;
+    line-height: 1.5;
+    font-size: 20px;
+
+}
 
 
 /*---------- footer -------- */
@@ -289,6 +427,7 @@ ul li {
     .nav{
         flex-wrap: wrap;
         justify-content: center;
+
     }
 
     .nav-logo{
@@ -531,6 +670,142 @@ ul li {
 
 /*---- nav & footer media query End------*/
 
+
+/* ---- main media query ---- */
+@media (max-width: 1200px ){
+    .main{
+        margin-top: 50px;
+    }
+
+}
+
+@media (max-width: 1200px ){
+    .recipient .time-selector{
+        width:80%;
+    }
+}
+
+@media (max-width: 700px ){
+    .main{
+        margin-top: 20px;
+    }    
+    
+    .view{
+        width: 95%;
+        font-size: 14px;
+    }
+
+    /* ----cart-list  700 */
+    .Cart .title .qty,
+    .Cart .title .price,
+    .Cart .title .subtotal{
+        display: none;
+    }
+
+    .cart-list .row > .qty::before,
+    .cart-list .row > .price::before,
+    .cart-list .row > .subtotal::before{
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .cart-list .row > .qty::before{
+        content: "數量"
+    }
+    .cart-list .row > .price::before{
+        content: "單價";
+    }
+    .cart-list .row > .subtotal::before{
+        content: "小計";
+    }
+
+    /* ---- reorder ---- */
+    .cart-list .row {
+        flex-wrap: wrap;
+        
+    }
+
+    .cart-list .row > .variant{
+        width: 90%;
+        order: 1;
+    }
+    .cart-list .row > .remove {
+        width: 10%;
+        align-self: flex-start;
+        order: 2;
+    }
+    .cart-list .row > .qty{
+        flex: auto;
+        text-align: center;
+        order: 3;
+    }
+    .cart-list .row > .price{
+        flex: auto;
+        text-align: center;
+        order: 4;
+    }
+    .cart-list .row > .subtotal{
+        flex: auto;
+        text-align: center;
+        order: 5;
+    }
+
+    /* ---- target  700 ----*/
+    .target{
+        flex-wrap: wrap;
+    }
+
+    .target .country,
+    .target .paymethod{
+        width:  100%;
+    }
+    .target .country{
+        margin-bottom: 20px;
+    }
+
+    .target .country .text,
+    .target .paymethod .text {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .target .country select,
+    .target .paymethod select{
+        width: 100%;
+    }
+
+    /* ---- recipient 700 ---- */
+    .text-line{
+        flex-wrap: wrap;
+    }
+    .recipient > .text-line .text,
+    .payment > .text-line .text {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .recipient > .text-line input,
+    .payment > .text-line input {
+        width: 95%;
+    }
+
+    .recipient > .text-line > .time-selector {
+        display: block;
+    }
+    .recipient > .text-line > .time-selector input {
+        width: 12px;
+    }
+    .time-selector label{
+        display: inline-block;
+        width:95%;
+        margin-bottom: 5px;
+    }
+    
+
+    /* ---- confirm 700 ---- */
+    #checkout {
+        width: 100%;
+    }
+}
 
 /* hidden */
 .hidden{

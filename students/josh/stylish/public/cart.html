@@ -83,7 +83,9 @@
                                     201807202140
                                     <br>
                                     <br>
-
+                                    顏色：白
+                                    <br>
+                                    尺寸：S
                                 </div>
                             </div>
 
@@ -127,38 +129,53 @@
 
                 <div class="recipient">
                     <div class="title">收件資料</div>
-                    <div class="line">
+                    <div class="text-line">
                         <div class="text">收件人姓名</div>
                         <input type="text" id="recipient-name">
                     </div>
-                    <div class="line">
+                    <div class="text-line">
                         <div class="text">Email</div>
                         <input type="text" id="recipient-email">
                     </div>
-                    <div class="line">
+                    <div class="text-line">
                         <div class="text">手機號碼</div>
                         <input type="text" id="recipient-phone">
                     </div>
-                    <div class="line">
+                    <div class="text-line">
                         <div class="text">收件地址</div>
                         <input type="text" id="recipient-address">
                     </div>
-                    <div class="line">
+                    <div class="text-line">
                         <div class="text">配送時間</div>
+                        <div class="time-selector">
+                            <label>
+                                <input type="radio" name="recipient-time" value="morning">
+                                 <span class="time">08:00 ~ 12:00</span> 
+                            </label>
+                            <label>
+                                <input type="radio" name="recipient-time" value="afternoon">
+                                <span class="time">14:00 ~ 18:00</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="recipient-time" value="anytime">
+                                <span class="time">不指定</span> 
+                            </label>
+                        </div>
+
                     </div>
                 </div>
 
                 <div class="payment">
                     <div class="title">付款資料</div>
-                    <div class="line">
+                    <div class="text-line">
                         <div class="text">信用卡號碼</div>
                         <input type="text" id="card-number">
                     </div>
-                    <div class="line">
+                    <div class="text-line">
                         <div class="text">有效期限</div>
                         <input type="text" id="card-expiration-date">
                     </div>
-                    <div class="line">
+                    <div class="text-line">
                         <div class="text">安全碼</div>
                         <input type="text" id="card-ccv">
                     </div>
