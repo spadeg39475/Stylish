@@ -1,6 +1,8 @@
 let stylishStorage = {
     prime: "",
 
+    
+
     cart: {
     
         shipping: "delivery",

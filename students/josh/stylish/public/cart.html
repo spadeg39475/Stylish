@@ -31,9 +31,9 @@
         
                     <div class="nav-right">
                         <input type="text" name="search" id="search" onkeypress="if(event.keyCode==13){search(value)}">
-                        <div class="cart item">
+                        <a href="./cart.html" class="cart item">
                             <div class="cart-qty"></div>
-                        </div>
+                        </a>
                         <div class="member item">
                             <img  src="./style/images/member.png" alt="member">
                         </div>
@@ -46,12 +46,12 @@
         </nav>    
 
         <div class="fixed-bar">
-                <div class="fixed-block">
+                <a href="./cart.html" class="fixed-block">
                     <div class="mobile-cart item">
                         <div class="mobile-cart-qty"></div>
                     </div>    
                     <span>購物車</span>
-                </div>
+                </a>
                 <span>|</span>
                 <div class="fixed-block">
                     <img src="./style/images/member-mobile.png" alt="member">
@@ -71,7 +71,7 @@
                         <div class="remove"></div>
                     </div>
                     <div class="cart-list">
-                        <div class="row">
+                        <!-- <div class="row">
 
                             <div class="variant">
                                 <div class="picture">
@@ -101,7 +101,7 @@
                             <div class="remove">
                                 <img src="./style/images/cart-remove.png">
                             </div>
-                        </div>
+                        </div> -->
                         
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                         <div class="title">總金額</div>
                         <div class="price">
                             <span class="nt">NT.</span>
-                            <span id="subtotal">599</span>
+                            <span id="subtotal"></span>
                         </div>
                     </div>
 
@@ -206,7 +206,7 @@
                         <div class="title">應付金額</div>
                         <div class="price">
                             <spna class="nt">NT.</spna>
-                            <span id="total">123</span>
+                            <span id="total"></span>
                         </div>
                     </div>
 
@@ -249,6 +249,7 @@
         </footer>
 
 
-    
+    <script src="./js/common.js"></script>
+    <script src="./js/cart.js"></script>
 </body>
 </html>

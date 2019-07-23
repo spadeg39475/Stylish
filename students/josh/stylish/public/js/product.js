@@ -28,6 +28,7 @@ let quantity_count_value = document.querySelector('#count');
 let btn_plus = document.querySelector('#plus');
 let btn_minus = document.querySelector('#minus');
 let btnAddCart = document.querySelector('.add-cart-btn');
+let main_img;
 let count = 1;
 let stock, stock_qty;  //紀錄庫存數量
 
@@ -69,6 +70,7 @@ callDetail(createDetails);
 function createDetails(res){
 
     // main img
+    main_img = res.data.main_image;
     details_main_image.setAttribute('src', res.data.main_image);
     // name
     details_product_name.textContent = res.data.title; 
@@ -255,13 +257,15 @@ function addCart() {
         newItem ={
             id: details_product_id.textContent,
             name: details_product_name.textContent,
+            main_image: main_img,
             price: product_price,
             color: {
                 name: currentColorName,
                 code: currentColor
             },
             size: currentSize,
-            qty: quantity_count_value.textContent
+            qty: quantity_count_value.textContent,
+            stock: stock_qty
         }
 
         stylishStorage.cart.list.push(newItem);
