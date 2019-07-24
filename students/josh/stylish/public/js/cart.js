@@ -171,3 +171,66 @@ isCartListEmpty();
 createCartList();
 cartListSum();
 totalAddFreight();
+
+
+let checkoutBtn = document.querySelector('#checkout');
+checkoutBtn.addEventListener('click', (e) => {
+    onSubmit(e)
+    .then(checkoutPay); 
+});
+
+let customNameInput = document.querySelector('#recipient-name');
+let customEmailInput = document.querySelector('#recipient-email');
+let customPhoneInput = document.querySelector('#recipient-phone');
+let customAddressInput = document.querySelector('#recipient-address');
+let timeSelector = document.querySelector('.time-selector');
+let orderInfo;
+
+function getRadioValue(radioName){  
+    let timeRadio = document.getElementsByName(radioName);
+    for(let i=0; i < timeRadio.length; i++){
+        if (timeRadio[i].checked){
+            return timeRadio[i].value
+        }
+    }            
+    return "undefined";        
+}  
+
+
+function checkoutPay(){
+    orderInfo = {
+        prime:　stylishStorage.prime,
+        order: {
+            shipping: stylishStorage.cart.shipping,
+            payment: stylishStorage.cart.payment,
+            subtotal: cartTotalPrice,
+            freight: stylishStorage.cart.freight,
+            total: Number(cartTotalPrice) + Number(stylishStorage.cart.freight),
+            recipient: {
+                name: customNameInput.value,
+                phone: customPhoneInput.value,
+                email: customEmailInput.value,
+                address: customAddressInput.value,
+                time: getRadioValue('recipient-time')
+            },
+
+            list: stylishStorage.cart.list
+        }
+    }
+
+    postCheckoutApi(orderInfo);
+}
+
+function postCheckoutApi(data){
+    let url = 'https://api.appworks-school.tw/api/1.0/order/checkout';
+
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data), 
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      }).then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log('Success:', response));
+}

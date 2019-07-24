@@ -169,17 +169,19 @@
                     <div class="title">付款資料</div>
                     <div class="text-line">
                         <div class="text">信用卡號碼</div>
-                        <input type="text" id="card-number">
+                        <div class="tpfield" id="card-number"></div>
                     </div>
                     <div class="text-line">
                         <div class="text">有效期限</div>
-                        <input type="text" id="card-expiration-date">
+                        <div class="tpfield" id="card-expiration-date"></div>
                     </div>
                     <div class="text-line">
                         <div class="text">安全碼</div>
-                        <input type="text" id="card-ccv">
+                        <div class="tpfield" id="card-ccv"></div>
                     </div>
                 </div>
+                
+
 
                 <div class="confirm">
                     <div class="row">
@@ -248,8 +250,10 @@
             </div>
         </footer>
 
-
     <script src="./js/common.js"></script>
+    <script src="https://js.tappaysdk.com/tpdirect/v5.1.0"></script>
+    <script src="./js/tapPay.js"></script>
     <script src="./js/cart.js"></script>
+    
 </body>
 </html>

@@ -8,7 +8,7 @@ let stylishStorage = {
         shipping: "delivery",
         payment: "credit_card",
         subtotal: "",
-        freight: "",
+        freight: "60",
         total: "",
         recipient: {
             name: "",
@@ -21,6 +21,9 @@ let stylishStorage = {
         list: []
     }
 }
+
+
+
 
 
 updateStorage();
