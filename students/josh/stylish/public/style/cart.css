@@ -347,6 +347,9 @@ select{
 
 }
 
+#checkout:disabled{
+    opacity: 0.25;
+}
 
 /*---------- footer -------- */
 .footer,

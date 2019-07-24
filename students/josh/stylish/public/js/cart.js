@@ -4,20 +4,20 @@ let detailsURL = "https://api.appworks-school.tw/api/1.0/products/details?id=";
 let cartTotalPrice = 0;  //購物車加總
 
 
-function getCartListDetail(callback){
+// function getCartListDetail(callback){
 
-    fetch(src)
-    .then((res) => {
-        return res.json(); 
-     })
-     .then((result) => {
-        cartListDetail = result;
-        callback(result);
-    })
-    .catch(function(err){
-    console.log("Fetch 錯誤:"+err);
-    });
-}
+//     fetch(src)
+//     .then((res) => {
+//         return res.json(); 
+//      })
+//      .then((result) => {
+//         cartListDetail = result;
+//         callback(result);
+//     })
+//     .catch(function(err){
+//     console.log("Fetch 錯誤:"+err);
+//     });
+// }
 
 // 創建購物車清單
 function createCartList(){
@@ -163,20 +163,23 @@ function showEmptyCart(){
 function isCartListEmpty(){
     if(stylishStorage.cart.list.length === 0){
         showEmptyCart();
+        checkoutBtn.setAttribute('disabled', true);
+    }
+    else{
+        checkoutBtn.removeAttribute('disabled');
     }
 }
 
-// 初始頁面
-isCartListEmpty();
-createCartList();
-cartListSum();
-totalAddFreight();
 
-
+// ------checkout part -------- 
 let checkoutBtn = document.querySelector('#checkout');
+
+// btn 確認付款 加入事件
 checkoutBtn.addEventListener('click', (e) => {
-    onSubmit(e)
-    .then(checkoutPay); 
+    checkCustomInput()
+    .then(onSubmit)
+    .then(checkoutPay)
+    .then(removeAllCartList);
 });
 
 let customNameInput = document.querySelector('#recipient-name');
@@ -184,7 +187,9 @@ let customEmailInput = document.querySelector('#recipient-email');
 let customPhoneInput = document.querySelector('#recipient-phone');
 let customAddressInput = document.querySelector('#recipient-address');
 let timeSelector = document.querySelector('.time-selector');
-let orderInfo;
+let orderInfo, orderNum;
+
+
 
 function getRadioValue(radioName){  
     let timeRadio = document.getElementsByName(radioName);
@@ -197,6 +202,30 @@ function getRadioValue(radioName){ 
 }  
 
 
+function checkCustomInput() {
+    return new Promise((resolve, reject) => {
+        if(!customNameInput.value){
+            alert('請輸入收件人姓名');
+            
+        }else if (!customEmailInput.value){
+            alert('請輸入Email');
+        }else if (!customPhoneInput.value){
+            alert('請輸入連絡電話');
+        }else if (!customAddressInput.value){
+            alert('請輸入收件地址');
+        }else{
+            resolve(event);
+        }
+
+        return; 
+    })
+}
+
+
+
+
+
+// 確認付款
 function checkoutPay(){
     orderInfo = {
         prime:　stylishStorage.prime,
@@ -221,6 +250,8 @@ function checkoutPay(){
     postCheckoutApi(orderInfo);
 }
 
+
+// post to Api
 function postCheckoutApi(data){
     let url = 'https://api.appworks-school.tw/api/1.0/order/checkout';
 
@@ -232,5 +263,32 @@ function postCheckoutApi(data){
         })
       }).then(res => res.json())
       .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response));
+      .then(response => {
+        orderNum = response.data.number;  
+        console.log('Success:', response);
+      })
 }
+
+// clear all
+function removeAllCartList() {
+    let cartList = document.querySelector('.cart-list');
+    while (cartList.firstChild) {
+        cartList.removeChild(cartList.firstChild);
+     }
+    
+    cartListSum();
+    totalAddFreight();
+
+    // 更新 stylishStorage 和 localStorage
+    stylishStorage.cart.list = []
+    localStorage.setItem('cart', JSON.stringify(stylishStorage.cart));
+    showCartNum();
+
+    isCartListEmpty();
+}
+
+// 初始頁面
+isCartListEmpty();
+createCartList();
+cartListSum();
+totalAddFreight();

@@ -52,7 +52,7 @@ function onSubmit(event) {
 
         // 確認是否可以 getPrime
         if (tappayStatus.canGetPrime === false) {
-            alert('can not get prime')
+            alert('信用卡資訊填寫錯誤');
             return
         }
 
@@ -62,7 +62,6 @@ function onSubmit(event) {
                 alert('get prime error ' + result.msg)
                 return
             }
-            alert('get prime 成功，prime: ' + result.card.prime)
             stylishStorage.prime = result.card.prime;
             resolve(console.log(stylishStorage.prime));
 
@@ -71,3 +70,4 @@ function onSubmit(event) {
         })
     })
 }
+
