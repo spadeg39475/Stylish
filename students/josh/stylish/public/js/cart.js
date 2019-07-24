@@ -149,14 +149,25 @@ function removeCartItem(){
     localStorage.setItem('cart', JSON.stringify(stylishStorage.cart));
     showCartNum();
     alert('此商品已從購物車移除');
+
+    isCartListEmpty();
 }
 
+function showEmptyCart(){
+    let cartList = document.querySelector('.cart-list');
+    let emptyText = document.createElement('h3');
+    emptyText.textContent = '購物車內目前沒有商品';
+    cartList.appendChild(emptyText);
+}
 
-
-
-
+function isCartListEmpty(){
+    if(stylishStorage.cart.list.length === 0){
+        showEmptyCart();
+    }
+}
 
 // 初始頁面
+isCartListEmpty();
 createCartList();
 cartListSum();
 totalAddFreight();
