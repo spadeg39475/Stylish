@@ -26,7 +26,7 @@ TPDirect.card.setup({
             'color': 'black'
         },
         '.valid': {
-            // 'color': 'green'
+            'color': 'green'
         },
         '.invalid': {
             // 'color': 'red'

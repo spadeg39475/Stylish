@@ -1,7 +1,6 @@
 
-let src;
-let detailsURL = "https://api.appworks-school.tw/api/1.0/products/details?id=";
-let cartTotalPrice = 0;  //購物車加總
+// let detailsURL = "https://api.appworks-school.tw/api/1.0/products/details?id=";
+
 
 
 // function getCartListDetail(callback){
@@ -172,7 +171,7 @@ function isCartListEmpty(){
 
 
 // ------checkout part -------- 
-let checkoutBtn = document.querySelector('#checkout');
+
 
 // btn 確認付款 加入事件
 checkoutBtn.addEventListener('click', (e) => {
@@ -182,12 +181,7 @@ checkoutBtn.addEventListener('click', (e) => {
     .then(removeAllCartList);
 });
 
-let customNameInput = document.querySelector('#recipient-name');
-let customEmailInput = document.querySelector('#recipient-email');
-let customPhoneInput = document.querySelector('#recipient-phone');
-let customAddressInput = document.querySelector('#recipient-address');
-let timeSelector = document.querySelector('.time-selector');
-let orderInfo, orderNum;
+
 
 
 

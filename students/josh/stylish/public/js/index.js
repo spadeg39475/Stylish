@@ -1,13 +1,4 @@
 
-let stylish = {
-    api: "products",
-    productType: "all" 
-}
-
-
-
-
-
 // url params
 let stylishURL = new URL(location.href);
 const { href, protocol, hostname, pathname, search, searchParams } = stylishURL;
@@ -17,13 +8,6 @@ for(let pair of params.entries()){
 }
 
 let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
-
-
-let isLoading = false;
-let productlist;
-
-// 宣告
-let  categoryBlock = document.querySelector('.category');
 
 
 // homepage
@@ -57,12 +41,6 @@ function callAPI(callback){
 // ===============================================================
 //         封面 Img
 // ===============================================================
-
-let campaigns;
-let content_array;
-let main_block = document.querySelector('.main-block');
-let campaign_count = 0;
-
 
 window.addEventListener("DOMContentLoaded", createCampaignImg());
 
@@ -138,8 +116,6 @@ function setCampaignImg(res, i) {
         });
     })
 }
-
-
 
 // 每 10 秒切換圖片
 setInterval(function(){
@@ -341,9 +317,6 @@ function err_page(){
 
 
 // ----mobile search ----------
-let mobile_search = document.querySelector('.mobile-search-img');
-let mobile_search_input = document.querySelector('.mobile-search-input');
-
 mobile_search.addEventListener('click', () =>{
     mobile_search.classList.add('hidden');
     mobile_search_input.classList.remove('hidden');

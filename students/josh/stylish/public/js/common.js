@@ -1,36 +1,3 @@
-let stylishStorage = {
-    prime: "",
-
-    
-
-    cart: {
-    
-        shipping: "delivery",
-        payment: "credit_card",
-        subtotal: "",
-        freight: "60",
-        total: "",
-        recipient: {
-            name: "",
-            phone: "",
-            email: "",
-            address: "",
-            time: ""
-        },
-
-        list: []
-    }
-}
-
-
-
-
-
-updateStorage();
-showCartNum();
-
-
-
 // localStorage 有資料 => 更新到 stylishStorage
 //              無資料 => 建立 initial structure
 function updateStorage(){
@@ -55,3 +22,6 @@ function showCartNum() {
 
 }
 
+// call func
+updateStorage();
+showCartNum();

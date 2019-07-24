@@ -1,42 +1,7 @@
-
-let stylish = {
+stylish = {
     api: "products",
     productType: "details" 
 }
-
-
-//------宣告 --------
-let isLoading = false;
-let details;
-
-let details_main_image =  document.querySelector('#main-img');
-let details_product_name = document.querySelector('#product-name');
-let details_product_id = document.querySelector('#product-id');
-let details_product_price = document.querySelector('#product-price');
-let details_product_colors = document.querySelector('#product-colors');
-let details_product_sizes = document.querySelector('#product-sizes');
-let details_product_note = document.querySelector('#product-note');
-let details_product_story = document.querySelector('.story');
-let details_product_image = document.querySelectorAll('.product-image');
-let note = document.querySelector('#note');
-let texture = document.querySelector('#texture');
-let description = document.querySelector('#description');
-let wash = document.querySelector('#wash');
-let place = document.querySelector('#place');
-let quantity_count = document.querySelector('#quantity-count');
-let quantity_count_value = document.querySelector('#count');
-let btn_plus = document.querySelector('#plus');
-let btn_minus = document.querySelector('#minus');
-let btnAddCart = document.querySelector('.add-cart-btn');
-let main_img;
-let count = 1;
-let stock, stock_qty;  //紀錄庫存數量
-
-
-let currentColor, currentColorName, currentSize;
-let product_price;
-
-let newItem;
 
 // url params
 let productURL = new URL(location.href);
@@ -315,9 +280,6 @@ function err_page(){
 
 
 // ----mobile search ----------
-let mobile_search = document.querySelector('.mobile-search-img');
-let mobile_search_input = document.querySelector('.mobile-search-input');
-
 mobile_search.addEventListener('click', () =>{
     mobile_search.classList.add('hidden');
     mobile_search_input.classList.remove('hidden');
