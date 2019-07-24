@@ -1,7 +1,9 @@
 
 let src;
 let detailsURL = "https://api.appworks-school.tw/api/1.0/products/details?id=";
-let cartTotalPrice = 0;
+let cartTotalPrice = 0;  //購物車加總
+
+
 function getCartListDetail(callback){
 
     fetch(src)
@@ -17,7 +19,7 @@ function getCartListDetail(callback){
     });
 }
 
-
+// 創建購物車清單
 function createCartList(){
     let cartList = document.querySelector('.cart-list');
 
@@ -104,20 +106,13 @@ function createCartList(){
         cartList.appendChild(listRow);
 
         // remove function
-        remove.addEventListener('click', () => {
-            cartList.removeChild(listRow);
-            cartListSum();
-            totalAddFreight();
-            array.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(stylishStorage.cart));
-            showCartNum();
-            alert('此商品已從購物車移除');
-        })
+        remove.addEventListener('click', removeCartItem);
 
     });
 
 }
 
+// 購物車加總
 function cartListSum(){
     cartTotalPrice = 0;
     let subtotals = document.querySelectorAll('.subtotal');
@@ -127,15 +122,38 @@ function cartListSum(){
 
     let cartTotal = document.querySelector('#subtotal');
     cartTotal.textContent = cartTotalPrice;
-    
-
 }
 
+//加運費 
 function totalAddFreight(){
     let freight = document.querySelector('#freight');
     let total = document.querySelector('#total');
     total.textContent = cartTotalPrice + Number(freight.textContent);
 }
+
+
+// 刪除購物車列
+function removeCartItem(){
+    let removeItem = event.target.parentNode.parentNode;
+    
+    // 取得移除列的 index
+    let removeIndex = Array.from(removeItem.parentNode.children).indexOf(removeItem);
+    
+    removeItem.parentNode.removeChild(removeItem);
+    
+    cartListSum();
+    totalAddFreight();
+
+    // 更新 stylishStorage 和 localStorage
+    stylishStorage.cart.list.splice(removeIndex, 1);
+    localStorage.setItem('cart', JSON.stringify(stylishStorage.cart));
+    showCartNum();
+    alert('此商品已從購物車移除');
+}
+
+
+
+
 
 
 // 初始頁面
