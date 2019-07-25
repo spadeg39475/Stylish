@@ -4,10 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style/common.css">
     <title>Stylish Thank you!</title>
 </head>
 <body>
+    <nav>
+        <div class="nav">
+            <div class="nav-logo">
+                <a href="./" id="all"><img id="logo" src="./style/images/logo.png" alt="logo" ></a>
+            </div>
+            <div class="mobile-search">
+                <input type="text" name="search" class="mobile-search-input hidden">
+                <img class="mobile-search-img" src="./style/images/search.png" alt="search">
+            </div>
+                
+            <div class="nav-menu">
+                <div class="nav-left">
+                    <ul class="menu">
+                        <li><a href="./?tag=women" id ="women" >女裝</a> </li>
+                        <li>|</li>
+                        <li><a href="./?tag=men" id ="men" >男裝</a></li>
+                        <li>|</li>
+                        <li><a href="./?tag=accessories" id ="accessories" >配件</a></li>
+                    </ul>
+                </div>
+    
+                <div class="nav-right">
+                    <input type="text" name="search" id="search" onkeypress="if(event.keyCode==13){search(value)}">
+                    <a href="./cart.html" class="cart item">
+                        <div class="cart-qty"></div>
+                    </a>
+                    <div class="member item">
+                        <img  src="./style/images/member.png" alt="member">
+                    </div>
+                </div>  
+    
+            </div>  
+    
+        </div>
+        <div class="base"></div>
+    </nav>    
+
+    <div class="fixed-bar">
+            <a href="./cart.html" class="fixed-block">
+                <div class="mobile-cart item">
+                    <div class="mobile-cart-qty"></div>
+                </div>    
+                <span>購物車</span>
+            </a>
+            <span>|</span>
+            <div class="fixed-block">
+                <img src="./style/images/member-mobile.png" alt="member">
+                <span>會員</span>
+            </div>
+    </div>
+    
     <h1>test for thank you page</h1>
+
+
+
+
+    <footer>
+        <div class="footer">
+            <div class="footer-wrap">
+                <ul class="footer-menu">
+                    <li>關於 Stylish</li>
+                    <span>|</span>
+                    <li>服務條款</li>
+                    <span>|</span>
+                    <li>隱私政策</li>
+                    <span>|</span>
+                    <li>聯絡我們</li>
+                    <span>|</span>
+                    <li>FAQ</li>
+                </ul>
+                
+                <div class="footer-contact">
+                        <img class="line" src="./style/images/line.png" alt="line">
+                        <img class="twitter" src="./style/images/twitter.png" alt="twitter">
+                        <img class="facebook" src="./style/images/facebook.png" alt="facebook">
+                </div>
+    
+                <span class="footer-tag"> ©2018. All rights reserved</span>  
+            </div>
+        </div>
+    </footer>
+
+
+
+
     
 
 <script src="./js/lib.js"></script>

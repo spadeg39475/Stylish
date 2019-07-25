@@ -6,7 +6,3 @@ for(let pair of params.entries()){
     console.log(orderNum);
 }
 
-let test = document.createElement('h2');
-test.textContent = orderNum;
-let body = document.querySelector('body');
-body.appendChild(test);

@@ -1,23 +1,3 @@
-
-// let detailsURL = "https://api.appworks-school.tw/api/1.0/products/details?id=";
-
-
-
-// function getCartListDetail(callback){
-
-//     fetch(src)
-//     .then((res) => {
-//         return res.json(); 
-//      })
-//      .then((result) => {
-//         cartListDetail = result;
-//         callback(result);
-//     })
-//     .catch(function(err){
-//     console.log("Fetch 錯誤:"+err);
-//     });
-// }
-
 // 創建購物車清單
 function createCartList(){
     let cartList = document.querySelector('.cart-list');
