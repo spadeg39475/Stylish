@@ -6,7 +6,5 @@ for(let pair of params.entries()){
     console.log(orderNum);
 }
 
-let view =document.querySelector('.view');
-let orderNumDiv = document.createElement('div');
-orderNumDiv.textContent = orderNum;
-view.appendChild(orderNumDiv);
+let orderNumber = document.querySelector('#orderNumber');
+orderNumber.textContent = orderNum;
