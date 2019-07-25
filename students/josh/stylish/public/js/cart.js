@@ -178,7 +178,8 @@ checkoutBtn.addEventListener('click', (e) => {
     checkCustomInput()
     .then(onSubmit)
     .then(checkoutPay)
-    .then(removeAllCartList);
+    .then(removeAllCartList)
+    .then(turnToThankyouPage);
 });
 
 
@@ -258,7 +259,7 @@ function postCheckoutApi(data){
       }).then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => {
-        orderNum = response.data.number;  
+        orderNum = response.data.number;
         console.log('Success:', response);
       })
 }
@@ -280,6 +281,16 @@ function removeAllCartList() {
 
     isCartListEmpty();
 }
+
+function turnToThankyouPage(){
+    setTimeout(() => {
+        window.location.href =`./thankyou.html?number=${orderNum}`;    
+    }, 3000);
+    
+}
+
+
+
 
 // 初始頁面
 isCartListEmpty();

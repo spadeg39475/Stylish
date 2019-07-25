@@ -20,6 +20,7 @@ let stylishStorage = {
         },
         list: []
     }
+    
 }
 
 let isLoading = false;
