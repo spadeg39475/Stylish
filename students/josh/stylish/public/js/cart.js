@@ -154,12 +154,12 @@ function isCartListEmpty(){
 
 
 // btn 確認付款 加入事件
-checkoutBtn.addEventListener('click', (e) => {
+checkoutBtn.addEventListener('click', () => {
     checkCustomInput()
     .then(onSubmit)
-    .then(checkoutPay)
+    .then(setOrder)
+    .then(postCheckoutApi)
     .then(removeAllCartList)
-    .then(turnToThankyouPage);
 });
 
 
@@ -201,7 +201,7 @@ function checkCustomInput() {
 
 
 // 確認付款
-function checkoutPay(){
+function setOrder(){
     orderInfo = {
         prime:　stylishStorage.prime,
         order: {
@@ -221,14 +221,15 @@ function checkoutPay(){
             list: stylishStorage.cart.list
         }
     }
-
-    postCheckoutApi(orderInfo);
+    return orderInfo;
 }
 
 
 // post to Api
 function postCheckoutApi(data){
     let url = 'https://api.appworks-school.tw/api/1.0/order/checkout';
+    let loading = document.querySelector('#loading');
+    loading.style.display = "block";
 
     fetch(url, {
         method: 'POST',
@@ -241,7 +242,10 @@ function postCheckoutApi(data){
       .then(response => {
         orderNum = response.data.number;
         console.log('Success:', response);
+        loading.style.display = "none";
+        turnToThankyouPage();
       })
+      
 }
 
 // clear all
@@ -263,10 +267,7 @@ function removeAllCartList() {
 }
 
 function turnToThankyouPage(){
-    setTimeout(() => {
-        window.location.href =`./thankyou.html?number=${orderNum}`;    
-    }, 3000);
-    
+    window.location.href =`./thankyou.html?number=${orderNum}`;    
 }
 
 
