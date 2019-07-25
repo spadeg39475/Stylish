@@ -74,7 +74,7 @@ function setCampaignImg(res, i) {
 
     //link to product id  
     let campaignLink = document.querySelector('.campaign-link');
-    campaignLink.setAttribute("href", `/product.html?id=${res.data[i].product_id}`); 
+    campaignLink.setAttribute("href", `./product.html?id=${res.data[i].product_id}`); 
 
     // set story
     content_array = res.data[i].story.split(/\r\n/);
@@ -222,7 +222,7 @@ function createProduct(res){
             //product link  
             productLink = document.createElement('a');
             productLink.setAttribute('id', item.id);
-            productLink.setAttribute('href', `/product.html?id=${item.id}`);
+            productLink.setAttribute('href', `./product.html?id=${item.id}`);
     
             // product block
             productBlock = document.createElement('div');
