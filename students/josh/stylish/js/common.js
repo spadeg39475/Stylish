@@ -25,3 +25,22 @@ function showCartNum() {
 // call func
 updateStorage();
 showCartNum();
+
+
+
+
+// ---- FB SDK ----//
+let member = document.querySelector('.member');
+
+member.addEventListener('click', ()=>{
+    FB.getLoginStatus(function(response) {
+        if (response.authResponse) {
+            window.location.href = "./profile.html";
+        }else {
+            FB.login(function(response) {
+                // handle the response
+                console.log(response);
+              }, {scope: 'public_profile, email'});
+        }
+    });
+})
