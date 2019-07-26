@@ -113,6 +113,11 @@ ul li {
     margin-top: 20px;
 }
 
+.member {
+    cursor: pointer;
+}
+
+
 .base {
     height: 40px;
     background-color: #333333;
@@ -345,16 +350,21 @@ ul li {
         }
     
         .footer-menu li {
-            display:flex;
+            display:inline-block;
             height: 20px;
-            width: 76px;
+            width: 100px;
             margin-top: 0px;
             margin-bottom: 8px;
             font-size: 14px;
-            justify-content: flex-start;
-            margin-right: 20%;
+            text-align: left;
+            margin-right: 10%;
         }
-    
+        
+        .footer-menu li:nth-last-child(1){
+            width:76px;
+            text-align: left;
+        }
+
         .footer-menu span {
             display: none;
         }
