@@ -1,18 +1,38 @@
 
 // url params
+let tag;
 let stylishURL = new URL(location.href);
 const { href, protocol, hostname, pathname, search, searchParams } = stylishURL;
 let params = stylishURL.searchParams;
 for(let pair of params.entries()){
-    stylish.productType = pair[1];
+    tag = pair[1];
 }
 
-let src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
+let src = "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
+
+
+
+
 
 
 // homepage
-window.addEventListener("DOMContentLoaded", callAPI(createProduct));
-checkNavActive();
+window.addEventListener("DOMContentLoaded", ()=>{
+
+    if (!tag){
+        
+    }
+    else if( tag === 'all' || tag === 'men' || tag === 'women' || tag === 'accessories'){
+        stylish.productType = tag;
+        src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType;
+        checkNavActive();
+   }else {
+        src = "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/search?keyword=" + tag; 
+   }
+
+    callAPI(createProduct)
+
+});
+
 
 
 //call API
@@ -47,9 +67,9 @@ window.addEventListener("DOMContentLoaded", createCampaignImg());
 //create first campaignImg
 function createCampaignImg(){
 
-    src = "https://api.appworks-school.tw/api/1.0/marketing/campaigns";
+    let cmpSrc = "https://api.appworks-school.tw/api/1.0/marketing/campaigns";
     
-    fetch(src)
+    fetch(cmpSrc)
     .then( res => {return res.json()})
     .then( result => {
         campaigns = result;
@@ -293,18 +313,18 @@ function createProduct(res){
 //          search 
 // ===============================================================
 
-function searching(value){
-    stylish.api = "products"
-    stylish.productType = "search";
-    src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType + "?keyword=" +value;
+// function searching(value){
+//     stylish.api = "products"
+//     stylish.productType = "search";
+//     src= "https://api.appworks-school.tw/api/1.0/" + stylish.api + "/" + stylish.productType + "?keyword=" +value;
  
-    let input = document.querySelector('#search');
-    input.value ="";
+//     let input = document.querySelector('#search');
+//     input.value ="";
 
-    removeProduct();
-    callAPI(createProduct);
+//     removeProduct();
+//     callAPI(createProduct);
 
-}
+// }
 
 
 function err_page(){
