@@ -1,0 +1,37 @@
+.main {
+    height: 500px;
+    padding-top: 20px;
+}
+.view {
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.profile {
+    margin: 20px auto;
+    width: 80%;
+    height: 300px;
+    background-color: #e5e9ec;
+    display: flex;
+    align-items: center;
+}
+.member_pic{
+    width:50%;
+}
+
+.row {
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+#member_name{
+    font-size: 30px;
+}
+#member_id{
+    font-size: 20px;
+    color: #8f8c8c
+}
+
+#member_email{ 
+    font-size: 24px;
+}

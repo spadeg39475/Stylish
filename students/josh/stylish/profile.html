@@ -5,9 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./style/common.css">
+    <link rel="stylesheet" href="./style/profile.css">
     <title>Stylish - Profile</title>
 </head>
 <body>
+        <script>
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId      : '491562071599440',
+                    cookie     : true,
+                    xfbml      : true,
+                    version    : 'v3.3'
+                  });
+                    
+                  FB.AppEvents.logPageView();
+                };
+              
+                (function(d, s, id){
+                   var js, fjs = d.getElementsByTagName(s)[0];
+                   if (d.getElementById(id)) {return;}
+                   js = d.createElement(s); js.id = id;
+                   js.src = "https://connect.facebook.net/en_US/sdk.js";
+                   fjs.parentNode.insertBefore(js, fjs);
+                 }(document, 'script', 'facebook-jssdk'));
+
+        </script>
+
         <nav>
                 <div class="nav">
                     <div class="nav-logo">
@@ -59,8 +82,27 @@
                     </div>
             </div>
 
-            <h1>This is profile page</h1>
-
+            <div class="main">
+                <div class="view">
+                    <div class="profile">
+                        <div class="member_pic">
+                            <img>
+                        </div>
+                        <div class="text">
+                            <div class="row">
+                                    <span id="member_name">123</span>
+                            </div>
+                                <div class="row">
+                                    <span id="member_id">111</span>
+                                    </div>
+                                <div class="row">
+                                    <span id="member_email">aowerua;kdjf;</span>
+                                </div>  
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
 
             <footer>
                     <div class="footer">
@@ -87,7 +129,10 @@
                         </div>
                     </div>
             </footer>
-            
+
+    <script src="./js/lib.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/profile.js"></script>
 
 </body>
 </html>
