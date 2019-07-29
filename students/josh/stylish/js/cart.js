@@ -155,11 +155,18 @@ function isCartListEmpty(){
 
 // btn 確認付款 加入事件
 checkoutBtn.addEventListener('click', () => {
-    checkCustomInput()
-    .then(onSubmit)
-    .then(setOrder)
-    .then(postCheckoutApi)
-    .then(removeAllCartList)
+    FB.getLoginStatus(function(response){
+        if(response.status === 'connected'){
+            checkCustomInput()
+        .then(onSubmit)
+        .then(setOrder)
+        .then(postCheckoutApi)
+        .then(removeAllCartList)
+        }else{
+            alert('請登入會員');
+        }
+    })
+    
 });
 
 
@@ -204,6 +211,7 @@ function checkCustomInput() {
 function setOrder(){
     orderInfo = {
         prime:　stylishStorage.prime,
+        access_token: JSON.parse(localStorage.memberInfo).access_token,
         order: {
             shipping: stylishStorage.cart.shipping,
             payment: stylishStorage.cart.payment,
@@ -274,7 +282,9 @@ function turnToThankyouPage(){
 
 
 // 初始頁面
-isCartListEmpty();
-createCartList();
-cartListSum();
-totalAddFreight();
+window.addEventListener('DOMContentLoaded',()=>{
+    isCartListEmpty();
+    createCartList();
+    cartListSum();
+    totalAddFreight();
+})

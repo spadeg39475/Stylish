@@ -1,23 +1,50 @@
 .main {
-    height: 500px;
+    height: 680px;
     padding-top: 20px;
+    height: 77vh;
+    margin-bottom: 20px ;
 }
 .view {
-    width: 60%;
+    width: 70%;
     height: 100%;
     margin: 0 auto;
 }
 
 .profile {
     margin: 20px auto;
-    width: 80%;
-    height: 300px;
-    background-color: #e5e9ec;
+    width: 100%;
+    height: 500px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
+.title {
+    width: 100%;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #5a565e;
+}
+
 .member_pic{
-    width:50%;
+    flex-grow: 1;
+    width:200px;
+    height:200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#member_pic{
+    border-radius: 50%;
+}
+
+.profile > .text{
+    flex-grow: 1;
+    padding-left: 10px;
 }
 
 .row {
@@ -34,4 +61,49 @@
 
 #member_email{ 
     font-size: 24px;
+}
+
+.logout {
+    width: 80px;
+    padding:10px;
+    background-color: #5a565e;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media (max-width: 1000px ){
+
+    .view {
+        width: 90%;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+    
+
+    .profile {
+        flex-direction: column;
+    }
+    
+    .member_pic{
+        width:100px;
+        height:100px;
+        margin: 20px;
+    }
+    #member_pic{
+        width: 100%;
+    }
+    .profile > .text{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .row{
+        width: 100%;
+        text-align: center;
+    }
 }

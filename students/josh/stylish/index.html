@@ -19,7 +19,8 @@
                     version    : 'v3.3'
                   });
                     
-                  FB.AppEvents.logPageView();
+                  FB.AppEvents.logPageView();   
+                    
                 };
               
                 (function(d, s, id){
@@ -29,7 +30,6 @@
                    js.src = "https://connect.facebook.net/en_US/sdk.js";
                    fjs.parentNode.insertBefore(js, fjs);
                  }(document, 'script', 'facebook-jssdk'));
-
         </script>
 
 
@@ -61,7 +61,7 @@
                         <div class="cart-qty"></div>
                     </a>
                     <div class="member item">
-                        <img  src="./style/images/member.png" alt="member">
+                        <img id="member" src="./style/images/member.png" alt="member">
                     </div>
                 </div>  
 
@@ -110,8 +110,10 @@
         </a>
         <span>|</span>
         <div class="fixed-block">
+            <div class="mobile_member">
                 <img src="./style/images/member-mobile.png" alt="member">
                 <span>會員</span>
+            </div>
         </div>
     </div>
 

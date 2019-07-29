@@ -1,25 +1,28 @@
 
-
+let member_pic = document.querySelector('#member_pic');
 let member_name = document.querySelector('#member_name');
 let member_id = document.querySelector('#member_id');
 let member_email = document.querySelector('#member_email');
 
 
-window.addEventListener('load', ()=>{
+window.addEventListener('DOMContentLoaded', ()=>{
+    memberInfo = JSON.parse(localStorage.getItem('memberInfo'));
+    member_name.textContent = memberInfo.name;
+    member_id.textContent = memberInfo.id;
+    member_email.textContent = memberInfo.email;
+    member_pic.setAttribute('src', `https://graph.facebook.com/${memberInfo.id}/picture?type=large`);            
+})
+
+let logout = document.querySelector('.logout');
+logout.addEventListener('click', () =>{
     FB.getLoginStatus(function(response){
         if(response.status === 'connected'){
-            // window.location.href = "./profile.html";
-            //get access token, and save it in local storage
-            localStorage.setItem('accessToken', response.authResponse.accessToken); 
+            FB.logout(function(response){
+                if(response.status !== 'connected'){
+                    localStorage.removeItem('memberInfo');
+                    location.href = "./";
+                }
+            });
         }
-        FB.api('/me', 'get', {
-            access_token: localStorage.access_token,
-            fields: 'id,name,email,picture'
-          }, function(response){
-              member_name.textContent = response.name;
-              member_id.textContent = response.id;
-              member_email.textContent = response.email;
-              
-        })
-    })
-})
+    })    
+});

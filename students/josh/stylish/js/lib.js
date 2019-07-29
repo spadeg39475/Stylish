@@ -23,6 +23,14 @@ let stylishStorage = {
     
 }
 
+let memberInfo = {
+    name: "",
+    id: "",
+    email: "",
+    picture: "",
+    access_token: ""
+}
+
 let isLoading = false;
 let productlist;
 

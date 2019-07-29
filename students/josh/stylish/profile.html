@@ -18,7 +18,8 @@
                     version    : 'v3.3'
                   });
                     
-                  FB.AppEvents.logPageView();
+                  FB.AppEvents.logPageView();   
+                    
                 };
               
                 (function(d, s, id){
@@ -28,7 +29,6 @@
                    js.src = "https://connect.facebook.net/en_US/sdk.js";
                    fjs.parentNode.insertBefore(js, fjs);
                  }(document, 'script', 'facebook-jssdk'));
-
         </script>
 
         <nav>
@@ -58,7 +58,7 @@
                                 <div class="cart-qty"></div>
                             </a>
                             <div class="member item">
-                                <img  src="./style/images/member.png" alt="member">
+                                <img id="member" src="./style/images/member.png" alt="member">
                             </div>
                         </div>  
             
@@ -77,27 +77,31 @@
                     </a>
                     <span>|</span>
                     <div class="fixed-block">
-                        <img src="./style/images/member-mobile.png" alt="member">
-                        <span>會員</span>
+                        <div class="mobile_member">
+                            <img src="./style/images/member-mobile.png" alt="member">
+                            <span>會員</span>
+                        </div> 
                     </div>
             </div>
 
             <div class="main">
                 <div class="view">
                     <div class="profile">
+                        <div class="title">會員資料</div>
                         <div class="member_pic">
-                            <img>
+                            <img id="member_pic">
                         </div>
                         <div class="text">
                             <div class="row">
-                                    <span id="member_name">123</span>
+                                    <span id="member_name"></span>
                             </div>
-                                <div class="row">
-                                    <span id="member_id">111</span>
-                                    </div>
-                                <div class="row">
-                                    <span id="member_email">aowerua;kdjf;</span>
-                                </div>  
+                            <div class="row">
+                                <span id="member_id"></span>
+                                </div>
+                            <div class="row">
+                                <span id="member_email"></span>
+                            </div>  
+                            <div class="logout">登出</div>
                         </div>
                         
                     </div>

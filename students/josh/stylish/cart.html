@@ -9,6 +9,29 @@
     <title>Stylish 購物車</title>
 </head>
 <body>
+        <script >
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId      : '491562071599440',
+                    cookie     : true,
+                    xfbml      : true,
+                    version    : 'v3.3'
+                  });
+                    
+                  FB.AppEvents.logPageView();   
+                    
+                };
+              
+                (function(d, s, id){
+                   var js, fjs = d.getElementsByTagName(s)[0];
+                   if (d.getElementById(id)) {return;}
+                   js = d.createElement(s); js.id = id;
+                   js.src = "https://connect.facebook.net/en_US/sdk.js";
+                   fjs.parentNode.insertBefore(js, fjs);
+                 }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+
         <nav>
             <div class="nav">
                 <div class="nav-logo">
@@ -36,7 +59,7 @@
                             <div class="cart-qty"></div>
                         </a>
                         <div class="member item">
-                            <img  src="./style/images/member.png" alt="member">
+                            <img id="member" src="./style/images/member.png" alt="member">
                         </div>
                     </div>  
         
@@ -55,8 +78,10 @@
                 </a>
                 <span>|</span>
                 <div class="fixed-block">
-                    <img src="./style/images/member-mobile.png" alt="member">
-                    <span>會員</span>
+                    <div class="mobile_member">
+                        <img src="./style/images/member-mobile.png" alt="member">
+                        <span>會員</span>
+                    </div> 
                 </div>
         </div>
         

@@ -1,3 +1,9 @@
+
+let member = document.querySelector('.member');
+let member_img = document.querySelector('#member');
+let mobile_member = document.querySelector('.mobile_member');
+
+
 // ===============================================================
 //          search 
 // ===============================================================
@@ -46,13 +52,6 @@ mobile_search_input.addEventListener('blur', () =>{
 
 
 
-
-
-
-
-
-
-
 // localStorage 有資料 => 更新到 stylishStorage
 //              無資料 => 建立 initial structure
 function updateStorage(){
@@ -77,43 +76,52 @@ function showCartNum() {
 
 }
 
-// call func
-updateStorage();
-showCartNum();
+
+function setUserImg(response) {
+    
+    if(localStorage.memberInfo && response.status === 'connected'){
+        member_img.setAttribute('src', JSON.parse(localStorage.memberInfo).picture);
+        member_img.style.borderRadius = "50%";
+    }
+    else{
+        member_img.setAttribute('src', "./style/images/member.png");
+        member_img.style.borderRadius = "";
+    }
+        
+}
 
 
 // ---- FB SDK ----//
 
-function Del_FB_App() { 
-    FB.getLoginStatus(function (response) {//取得目前user是否登入FB網站
-        
-        console.log(response);
-        if (response.status === 'connected') {
-            // Logged into Facebook
-            FB.api("/me/permissions", "DELETE", function (response) {
-                console.log(response); //gives true on app delete success 
-            });
-        }
-    });
-}
 
 
-let member = document.querySelector('.member');
+
 member.addEventListener('click', checkLoginState);
+mobile_member.addEventListener('click', checkLoginState);
+
 
 function checkLoginState(){
-    
+        
     FB.getLoginStatus(function(response){
-
         statusChangeCallback(response);
-    })
+    }, true)
 }
 
 function login(){
+    deleteCookie("fblo_" + "491562071599440");
     FB.login(function(response) {
         // handle the response
-        localStorage.setItem('accessToken', response.authResponse.accessToken); 
-    }, {scope: 'public_profile, email'});
+        memberInfo.access_token = response.authResponse.accessToken;
+
+        FB.api('/me?fields=id,name,email,picture', function(response) {
+            memberInfo.id = response.id;
+            memberInfo.name = response.name;
+            memberInfo.picture = response.picture.data.url;
+            memberInfo.email = response.email;
+            localStorage.setItem('memberInfo',JSON.stringify(memberInfo));    
+        });
+        console.log(response);
+    }, {scope: 'public_profile, email'}); 
 }
 
 function statusChangeCallback(response){
@@ -122,24 +130,31 @@ function statusChangeCallback(response){
     if(response.status === 'connected'){
         // window.location.href = "./profile.html";
         //get access token, and save it in local storage
-        localStorage.setItem('accessToken', response.authResponse.accessToken); 
-    }else if (response.status === 'not_authorized') {
-        // the user is logged in to Facebook, but has not authenticated the app
-        console.log('logged into Facebook, but not app');
-        login();
+        memberInfo = JSON.parse(localStorage.getItem('memberInfo'));
+        window.location.href = './profile.html';
     }else {
-        //response.status === 'unknown'
-        // the user isn't logged in to Facebook.
-        console.log('not logged into FB');
         login();
     }
 }
 
-function getUserInfo(accessToken) {
-    FB.api('/me', 'get', {
-      access_token: accessToken,
-      fields: 'id,name,email,picture'
-    }, function(response) {
-      console.log(response);
-    });
-  }
+function deleteCookie(name) {
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+ }
+ // deleteCookie("fblo_" + fbAppId); // fblo_yourFBAppId. example: fblo_491562071599440
+
+
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    updateStorage();
+    showCartNum();
+    
+    setTimeout(function(){
+        FB.getLoginStatus(function(response){
+            console.log(response);
+            setUserImg(response);
+        }, true);
+    }, 1000);
+    
+})
+
