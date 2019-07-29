@@ -211,7 +211,6 @@ function checkCustomInput() {
 function setOrder(){
     orderInfo = {
         prime:　stylishStorage.prime,
-        access_token: JSON.parse(localStorage.memberInfo).access_token,
         order: {
             shipping: stylishStorage.cart.shipping,
             payment: stylishStorage.cart.payment,
@@ -243,7 +242,8 @@ function postCheckoutApi(data){
         method: 'POST',
         body: JSON.stringify(data), 
         headers: new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${JSON.parse(localStorage.memberInfo).access_token}`
         })
       }).then(res => res.json())
       .catch(error => console.error('Error:', error))
