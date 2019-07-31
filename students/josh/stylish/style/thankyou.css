@@ -67,7 +67,9 @@
     left: 15%;
     bottom: -15%;
 }
-
+.message a:hover{
+    opacity: 0.8;
+}
 
 @media (max-width: 800px ){
     .line-1 {
@@ -84,3 +86,27 @@
         font-size: 24px;
     }
 }
+
+
+
+/* ------------------------- */
+.message {
+    animation-name: show;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+}
+
+
+
+
+@keyframes show {
+    0% {
+        opacity: 0;
+      }
+     
+
+    100% {
+        opacity: 1;
+    }
+}
+

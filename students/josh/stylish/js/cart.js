@@ -155,8 +155,7 @@ function isCartListEmpty(){
 
 // btn 確認付款 加入事件
 checkoutBtn.addEventListener('click', () => {
-    FB.getLoginStatus(function(response){
-        if(response.status === 'connected'){
+        if(localStorage.memberInfo){
             checkCustomInput()
         .then(onSubmit)
         .then(setOrder)
@@ -165,12 +164,9 @@ checkoutBtn.addEventListener('click', () => {
         }else{
             alert('請登入會員');
         }
-    })
     
 });
-
-
-
+// -----------------------------
 
 
 function getRadioValue(radioName){  
@@ -187,8 +183,7 @@ function getRadioValue(radioName){ 
 function checkCustomInput() {
     return new Promise((resolve, reject) => {
         if(!customNameInput.value){
-            alert('請輸入收件人姓名');
-            
+            alert('請輸入收件人姓名');   
         }else if (!customEmailInput.value){
             alert('請輸入Email');
         }else if (!customPhoneInput.value){

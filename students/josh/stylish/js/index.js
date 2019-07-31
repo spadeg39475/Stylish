@@ -330,33 +330,12 @@ function createProduct(res){
 function err_page(){
 
     removeProduct()
-    let  productBlock = document.createElement('div');;
+    let  productBlock = document.createElement('div');
+    productBlock.classList.add("errPage");
     productBlock.textContent = "請重新搜尋";
     categoryBlock.appendChild(productBlock);
 }
 
-
-// ----mobile search ----------
-mobile_search.addEventListener('click', () =>{
-    mobile_search.classList.add('hidden');
-    mobile_search_input.classList.remove('hidden');
-    mobile_search_input.focus();
-})
-
-mobile_search_input.addEventListener('keypress', (e)=>{
-    if(e.key == "Enter"){
-        searching(mobile_search_input.value);
-        mobile_search_input.blur();
-        mobile_search_input.value ="";
-        mobile_search_input.classList.add('hidden');
-        mobile_search.classList.remove('hidden');
-    }
-})
-
-mobile_search_input.addEventListener('blur', () =>{
-    mobile_search_input.classList.add('hidden');
-    mobile_search.classList.remove('hidden');
-})
 
 // =======================================================================
 

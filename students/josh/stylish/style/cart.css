@@ -91,6 +91,10 @@ select{
     cursor: pointer;
 }
 
+.Cart .row .remove:hover{
+    filter: contrast(0%);
+}
+
 .cart-list {
     border: 1px solid #979797;
     padding: 20px;
@@ -254,6 +258,10 @@ select{
     line-height: 1.5;
     font-size: 20px;
 
+}
+
+#checkout:hover{
+    opacity: 0.7;
 }
 
 #checkout:disabled{

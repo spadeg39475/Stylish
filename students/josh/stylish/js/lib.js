@@ -24,11 +24,14 @@ let stylishStorage = {
 }
 
 let memberInfo = {
-    name: "",
-    id: "",
-    email: "",
-    picture: "",
-    access_token: ""
+    access_token: "",
+    provider: "",
+    user: {
+        name: "",
+        id: "",
+        email: "",
+        picture: ""
+    }
 }
 
 let isLoading = false;

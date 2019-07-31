@@ -1,7 +1,7 @@
 .main {
     height: 680px;
     padding-top: 20px;
-    height: 77vh;
+    height: 800px;
     margin-bottom: 20px ;
 }
 .view {
@@ -31,15 +31,17 @@
 
 .member_pic{
     flex-grow: 1;
-    width:200px;
-    height:200px;
+    width: 200px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 #member_pic{
     border-radius: 50%;
+    max-width: 200px;
 }
 
 .profile > .text{
@@ -75,6 +77,9 @@
 
 @media (max-width: 1000px ){
 
+    .main{
+        height: 600px;
+    }
     .view {
         width: 90%;
     }

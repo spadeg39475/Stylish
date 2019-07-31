@@ -147,6 +147,10 @@
     cursor: pointer;
 }
 
+.details .add-cart-btn:hover{
+    opacity: 0.7;
+}
+
 .details .note {
     font-size: 20px;
     line-height: 1.3;
