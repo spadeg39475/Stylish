@@ -1,5 +1,5 @@
-# Stylish - A clothing eCommerce website
-
+# Stylish 
+A clothing eCommerce website
 link: https://spadeg39475.github.io/stylish 
 
 ## Skills
@@ -17,7 +17,6 @@ link: https://spadeg39475.github.io/stylish
 - RESTful APIs
 - AJAX
 
----
 
 ## Features: 
 - Implemented RWD with HTML, CSS 
