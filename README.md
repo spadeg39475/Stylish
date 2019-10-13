@@ -1,25 +1,15 @@
-# Web Front-End Class 2019 Summer
+# Stylish - A clothing eCommerce website
 
-## Outline
+link: https://spadeg39475.github.io/stylish 
 
+## Skills
 ### Programming Language
 - HTML, CSS
 - JavaScript
 
 ### Layout
 - Responsive Web Design (RWD)
-- Flex and Grid Layout
-- Single Page Application (SPA)
-
-### Library and Framework
-- Bootstrap
-- JQuery
-- React (Router and Redux)
-- Facebook SDK
-
-### Backend Framework and Cloud Service
-- Node.js and Express
-- Firebase
+- Flex Layout
 
 ### Networking
 - HTTP / HTTPS
@@ -27,28 +17,32 @@
 - RESTful APIs
 - AJAX
 
-### Persistent Store
-- Web Storage
-- Cookie
+---
 
-### Patterns
-- Module
-- Object-Oriented Programming
-- Functional Programming
-- MVC and MVVM
+## Features: 
+- Implemented RWD with HTML, CSS 
+- Connected to backend API by AJAX
+- Carousel slider and Infinite Scrolling without library
+ 
+<p align="center">
+ <img src="https://i.imgur.com/YKGVahn.jpg" width="600">
+</p>
 
-### Others
-- Unit Test & Debugging
-- Performance Optimization
-- Cache
 
-### Tools for Development
-- ESLint
-- Webpack
-- Git, GitHub
-- Slack
+<p align="center">
+ <img src="https://i.imgur.com/u1cfqDA.png" width="600">
+</p>
 
-### Tools for Business
-- Google Analytics
-- Google Optimize
-- Facebook Pixel
+---
+
+- Utilized LocalStorage for shopping cart feature
+- Facebook Login SDK for member system
+- Credit card payment with TapPay SDK
+- Collaborated with backend and iOS team and
+  managed project via git flow 
+
+<p align="center">
+ <img src="https://i.imgur.com/M9XAdyV.png" width="600">
+</p>
+  
+
