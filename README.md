@@ -1,6 +1,6 @@
 # Stylish 
 
-A clothing eCommerce website.
+A clothing eCommerce website.  
 link: https://spadeg39475.github.io/stylish 
 
 ## Skills
