@@ -36,10 +36,8 @@ link: https://spadeg39475.github.io/stylish
 ---
 
 - Utilized LocalStorage for shopping cart feature
-- Facebook Login SDK for member system
+- Integrated Facebook Login SDK
 - Credit card payment with TapPay SDK
-- Collaborated with backend and iOS team and
-  managed project via git flow 
 
 <p align="center">
  <img src="https://i.imgur.com/M9XAdyV.png" width="600">
